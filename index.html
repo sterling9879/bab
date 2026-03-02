@@ -10,26 +10,26 @@
 *{margin:0;padding:0;box-sizing:border-box}
 
 :root{
---bg-primary:#0c0a14;
---bg-secondary:#100e1a;
---bg-card:#13111f;
---bg-card-hover:#1a1730;
---gold:#c9a84c;
---gold-light:#e8d48b;
---gold-dim:#8b7532;
+--bg-primary:#f8f6f1;
+--bg-secondary:#f0ede5;
+--bg-card:#ffffff;
+--bg-card-hover:#f5f2eb;
+--gold:#9a7b2d;
+--gold-light:#b8942e;
+--gold-dim:#7a6223;
 --blue-deep:#1a2a5e;
 --blue-royal:#2d3f8f;
---blue-light:#6b7fd4;
---blue-soft:#a3b1e8;
+--blue-light:#4a62b3;
+--blue-soft:#3b509a;
 --cream:#f0e6d0;
 --cream-dim:#b8a88a;
---text-primary:#e8e0d0;
---text-secondary:#9b917d;
---text-dim:#6b6355;
---border-color:#2a2440;
---border-gold:rgba(201,168,76,0.25);
---glow-gold:0 0 30px rgba(201,168,76,0.15);
---glow-blue:0 0 30px rgba(107,127,212,0.15);
+--text-primary:#2c2418;
+--text-secondary:#5a4e3c;
+--text-dim:#8a7e6c;
+--border-color:#ddd5c5;
+--border-gold:rgba(154,123,45,0.3);
+--glow-gold:0 0 30px rgba(154,123,45,0.1);
+--glow-blue:0 0 30px rgba(74,98,179,0.1);
 }
 
 html{scroll-behavior:smooth}
@@ -58,7 +58,7 @@ content:'';
 position:fixed;
 top:0;left:0;
 width:100%;height:100%;
-background:radial-gradient(ellipse at center,transparent 50%,rgba(12,10,20,0.7) 100%);
+background:radial-gradient(ellipse at center,transparent 50%,rgba(240,237,229,0.5) 100%);
 pointer-events:none;
 z-index:1;
 }
@@ -376,29 +376,29 @@ transform:translateY(-3px);
 }
 
 .btn-deep{
-background:linear-gradient(135deg,#2a1f4a,#1a1535);
-color:var(--gold-light);
+background:linear-gradient(135deg,var(--gold),var(--gold-dim));
+color:#fff;
 border:1px solid var(--border-gold);
-box-shadow:0 4px 25px rgba(42,31,74,0.3);
+box-shadow:0 4px 25px rgba(154,123,45,0.2);
 }
 
 .btn-deep:hover{
-box-shadow:0 6px 35px rgba(201,168,76,0.15);
+box-shadow:0 6px 35px rgba(154,123,45,0.3);
 transform:translateY(-3px);
 border-color:var(--gold);
 }
 
 .btn-sacred{
-background:linear-gradient(135deg,#3a1a1a,#2a1010);
-color:var(--gold-light);
-border:1px solid rgba(201,168,76,0.2);
-box-shadow:0 4px 25px rgba(58,26,26,0.3);
+background:linear-gradient(135deg,var(--blue-royal),var(--blue-deep));
+color:#fff;
+border:1px solid rgba(45,63,143,0.3);
+box-shadow:0 4px 25px rgba(45,63,143,0.2);
 }
 
 .btn-sacred:hover{
-box-shadow:0 6px 35px rgba(201,168,76,0.2);
+box-shadow:0 6px 35px rgba(45,63,143,0.3);
 transform:translateY(-3px);
-border-color:var(--gold);
+border-color:var(--blue-royal);
 }
 
 .btn:disabled{opacity:0.4;cursor:not-allowed;transform:none!important}
@@ -522,7 +522,7 @@ transform:translateY(-3px);
 .gallery-img{
 width:100%;
 height:180px;
-background:linear-gradient(135deg,var(--bg-secondary),#1a1530);
+background:linear-gradient(135deg,var(--bg-secondary),#e8e2d5);
 display:flex;
 align-items:center;
 justify-content:center;
@@ -536,7 +536,7 @@ content:'';
 position:absolute;
 top:0;left:0;
 width:100%;height:100%;
-background:linear-gradient(180deg,transparent 50%,rgba(12,10,20,0.9));
+background:linear-gradient(180deg,transparent 50%,rgba(248,246,241,0.9));
 }
 
 .gallery-img .img-number{
@@ -633,7 +633,7 @@ color:var(--text-secondary);
 
 /* Result banner */
 .result-banner{
-background:linear-gradient(135deg,rgba(201,168,76,0.08),rgba(12,10,20,0.95));
+background:linear-gradient(135deg,rgba(154,123,45,0.08),rgba(255,255,255,0.95));
 border:1px solid var(--gold);
 border-radius:16px;
 padding:36px;
@@ -888,7 +888,7 @@ font-size:1.4rem;
 position:fixed;
 top:0;left:0;
 width:100%;height:100%;
-background:rgba(12,10,20,0.97);
+background:rgba(248,246,241,0.97);
 display:none;
 align-items:center;
 justify-content:center;
@@ -1176,7 +1176,7 @@ Continuar Análise
 
 <div class="gallery">
 <div class="gallery-item">
-<div class="gallery-img" style="background:linear-gradient(135deg,#0e0c18,#1a1835)">
+<div class="gallery-img" style="background:linear-gradient(135deg,#ede8db,#ddd5c5)">
 <span class="img-number">SINAL 01</span>
 <span style="font-size:3.5rem;z-index:1">🏛️</span>
 </div>
@@ -1187,7 +1187,7 @@ Continuar Análise
 </div>
 
 <div class="gallery-item">
-<div class="gallery-img" style="background:linear-gradient(135deg,#0c100e,#1a251a)">
+<div class="gallery-img" style="background:linear-gradient(135deg,#e8ede5,#d5ddc8)">
 <span class="img-number">SINAL 02</span>
 <span style="font-size:3.5rem;z-index:1">✡️</span>
 </div>
@@ -1209,7 +1209,7 @@ Continuar Análise
 </div>
 
 <div class="gallery-item">
-<div class="gallery-img" style="background:linear-gradient(135deg,#0c0c14,#1a1a2a)">
+<div class="gallery-img" style="background:linear-gradient(135deg,#e8e8f0,#d5d5e0)">
 <span class="img-number">SINAL 04</span>
 <span style="font-size:3.5rem;z-index:1">⚖️</span>
 </div>
@@ -1220,7 +1220,7 @@ Continuar Análise
 </div>
 
 <div class="gallery-item">
-<div class="gallery-img" style="background:linear-gradient(135deg,#100c18,#201a2a)">
+<div class="gallery-img" style="background:linear-gradient(135deg,#ede8f0,#ddd5e0)">
 <span class="img-number">SINAL 05</span>
 <span style="font-size:3.5rem;z-index:1">🕎</span>
 </div>
@@ -1751,11 +1751,11 @@ class Particle {
     this.maxLife = Math.random() * 600 + 400;
     // Gold tones
     const tones = [
-      [201, 168, 76],
-      [232, 212, 139],
-      [163, 177, 232],
-      [139, 117, 50],
-      [107, 127, 212]
+      [154, 123, 45],
+      [180, 148, 50],
+      [120, 100, 40],
+      [74, 98, 179],
+      [100, 80, 35]
     ];
     const tone = tones[Math.floor(Math.random() * tones.length)];
     this.r = tone[0];
