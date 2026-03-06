@@ -3,1872 +3,987 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>As 12 Frequências Sagradas — Teste de Acesso</title>
+<title>Teste de Qualificação — Oração Judaica da Prosperidade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
-
 *{margin:0;padding:0;box-sizing:border-box}
 
 :root{
---bg-primary:#f8f6f1;
---bg-secondary:#f0ede5;
---bg-card:#ffffff;
---bg-card-hover:#f5f2eb;
---gold:#9a7b2d;
---gold-light:#b8942e;
---gold-dim:#7a6223;
---blue-deep:#1a2a5e;
---blue-royal:#2d3f8f;
---blue-light:#4a62b3;
---blue-soft:#3b509a;
---cream:#f0e6d0;
---cream-dim:#b8a88a;
---text-primary:#2c2418;
---text-secondary:#5a4e3c;
---text-dim:#8a7e6c;
---border-color:#ddd5c5;
---border-gold:rgba(154,123,45,0.3);
---glow-gold:0 0 30px rgba(154,123,45,0.1);
---glow-blue:0 0 30px rgba(74,98,179,0.1);
+--bg:#0d2f3f;
+--bg-light:#133d52;
+--bg-card:rgba(255,255,255,0.07);
+--bg-card-hover:rgba(255,255,255,0.12);
+--gold:#f5c518;
+--gold-dark:#d4a90a;
+--text:#ffffff;
+--text-dim:rgba(255,255,255,0.7);
+--green:#22c55e;
+--red:#ef4444;
+--progress-bg:rgba(255,255,255,0.15);
 }
 
 html{scroll-behavior:smooth}
 
 body{
-font-family:'Lora',serif;
-background:var(--bg-primary);
-color:var(--text-primary);
+font-family:'Inter',sans-serif;
+background:var(--bg);
+color:var(--text);
 min-height:100vh;
 overflow-x:hidden;
-position:relative;
 }
 
-/* Particles canvas */
-#particles-canvas{
-position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-z-index:0;
-pointer-events:none;
-}
-
-/* Subtle vignette */
-body::before{
-content:'';
-position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:radial-gradient(ellipse at center,transparent 50%,rgba(240,237,229,0.5) 100%);
-pointer-events:none;
-z-index:1;
-}
-
+/* ===== SCREENS ===== */
 .screen{
 display:none;
 min-height:100vh;
-position:relative;
-z-index:2;
-padding:20px;
+padding:20px 16px 40px;
+max-width:480px;
+margin:0 auto;
+animation:fadeIn 0.4s ease;
 }
+.screen.active{display:block}
 
-.screen.active{
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:flex-start;
-padding-top:40px;
-animation:screenFadeIn 1s cubic-bezier(0.22,1,0.36,1);
-}
-
-@keyframes screenFadeIn{
-from{opacity:0;transform:translateY(30px)}
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(12px)}
 to{opacity:1;transform:translateY(0)}
 }
 
-.container{
-max-width:680px;
-width:100%;
-margin:0 auto;
-padding:20px;
+/* ===== PROGRESS BAR ===== */
+.progress-wrap{
+position:fixed;
+top:0;left:0;right:0;
+height:6px;
+background:var(--progress-bg);
+z-index:100;
+}
+.progress-bar{
+height:100%;
+background:var(--gold);
+border-radius:0 3px 3px 0;
+transition:width 0.5s ease;
+width:0%;
 }
 
-/* Decorative ornament */
-.ornament{
-text-align:center;
-color:var(--gold);
-font-size:1.5rem;
-margin:8px 0 20px;
-opacity:0.6;
-letter-spacing:12px;
-}
-
+/* ===== TYPOGRAPHY ===== */
 h1{
-font-family:'Cormorant Garamond',serif;
-font-size:clamp(1.5rem,4.5vw,2.4rem);
-color:var(--gold);
-text-align:center;
-margin-bottom:8px;
-font-weight:600;
-letter-spacing:1px;
+font-size:1.6rem;
+font-weight:800;
 line-height:1.3;
+margin-bottom:12px;
 }
+h1 .gold{color:var(--gold)}
 
 h2{
-font-family:'Cormorant Garamond',serif;
-font-size:clamp(1.1rem,3vw,1.5rem);
-color:var(--blue-soft);
+font-size:1.25rem;
+font-weight:700;
+line-height:1.35;
+margin-bottom:10px;
+}
+
+.subtitle{
+font-size:0.95rem;
+color:var(--text-dim);
+line-height:1.5;
+margin-bottom:20px;
+}
+
+/* ===== OPTION BUTTONS ===== */
+.option-btn{
+display:flex;
+align-items:center;
+width:100%;
+padding:16px 18px;
+margin-bottom:10px;
+background:var(--bg-card);
+border:1.5px solid rgba(255,255,255,0.1);
+border-radius:12px;
+color:var(--text);
+font-size:0.95rem;
+font-weight:500;
+cursor:pointer;
+transition:all 0.2s ease;
+text-align:left;
+line-height:1.4;
+}
+.option-btn:hover{
+background:var(--bg-card-hover);
+border-color:rgba(255,255,255,0.2);
+}
+.option-btn.selected{
+background:rgba(245,197,24,0.12);
+border-color:var(--gold);
+}
+.option-btn .emoji{
+font-size:1.2rem;
+margin-right:12px;
+flex-shrink:0;
+}
+.option-btn .arrow{
+margin-left:auto;
+font-size:0.8rem;
+opacity:0.5;
+flex-shrink:0;
+padding-left:10px;
+}
+.option-btn.highlight-first{
+border-color:rgba(245,197,24,0.3);
+}
+
+/* ===== GENDER CARDS ===== */
+.gender-cards{
+display:flex;
+gap:14px;
+margin:20px 0;
+}
+.gender-card{
+flex:1;
+border-radius:14px;
+overflow:hidden;
+cursor:pointer;
+border:2px solid transparent;
+transition:all 0.3s ease;
+background:var(--bg-card);
+}
+.gender-card:hover{border-color:rgba(255,255,255,0.3)}
+.gender-card.selected{border-color:var(--gold)}
+.gender-card img{
+width:100%;
+height:200px;
+object-fit:cover;
+display:block;
+}
+.gender-card .label{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:12px 16px;
+font-weight:600;
+font-size:0.95rem;
+}
+.gender-card .label .arrow{opacity:0.5;font-size:0.8rem}
+
+/* ===== INTERSTITIAL SCREENS ===== */
+.interstitial{
 text-align:center;
-margin-bottom:24px;
-font-weight:400;
+padding-top:60px;
+}
+.interstitial img{
+width:100%;
+max-width:400px;
+border-radius:14px;
+margin-bottom:20px;
+}
+.interstitial p{
+font-size:1.1rem;
+line-height:1.5;
+margin-bottom:30px;
+padding:0 10px;
+}
+.interstitial p strong{font-weight:700}
+
+/* ===== BADGE ===== */
+.badge{
+display:inline-block;
+padding:8px 18px;
+border-radius:20px;
+font-size:0.85rem;
+font-weight:700;
+margin-bottom:16px;
+}
+.badge-yellow{
+background:var(--gold);
+color:#1a1a00;
+}
+.badge-red{
+background:var(--red);
+color:#fff;
+}
+.badge-green{
+background:var(--green);
+color:#fff;
+}
+
+/* ===== SCARCITY BADGE ===== */
+.scarcity-badge{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+background:var(--gold);
+color:#1a1a00;
+padding:10px 20px;
+border-radius:25px;
+font-size:0.85rem;
+font-weight:700;
+margin-top:24px;
+}
+.scarcity-badge .red-dot{
+width:8px;height:8px;
+background:var(--red);
+border-radius:50%;
+animation:pulse 1.5s infinite;
+}
+@keyframes pulse{
+0%,100%{opacity:1}
+50%{opacity:0.3}
+}
+
+/* ===== MAIN BUTTON ===== */
+.btn-primary{
+display:block;
+width:100%;
+padding:16px;
+background:var(--gold);
+color:#1a1a00;
+font-size:1rem;
+font-weight:700;
+border:none;
+border-radius:12px;
+cursor:pointer;
+margin-top:20px;
+transition:all 0.2s ease;
+}
+.btn-primary:hover{background:var(--gold-dark)}
+.btn-primary:disabled{
+opacity:0.4;
+cursor:not-allowed;
+}
+
+/* ===== LIST ===== */
+.check-list{
+list-style:none;
+margin:16px 0 20px;
+padding:0;
+}
+.check-list li{
+padding:8px 0;
+font-size:0.95rem;
+color:var(--text-dim);
+display:flex;
+align-items:flex-start;
+gap:10px;
+line-height:1.4;
+}
+.check-list li .num{
+color:var(--gold);
+font-weight:700;
+flex-shrink:0;
+}
+
+/* ===== CHECKBOX GRID ===== */
+.checkbox-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin:16px 0;
+}
+.check-item{
+display:flex;
+align-items:center;
+gap:10px;
+padding:12px 14px;
+background:var(--bg-card);
+border:1.5px solid rgba(255,255,255,0.1);
+border-radius:10px;
+cursor:pointer;
+transition:all 0.2s;
+font-size:0.85rem;
+font-weight:500;
+}
+.check-item:hover{background:var(--bg-card-hover)}
+.check-item.checked{
+background:rgba(245,197,24,0.12);
+border-color:var(--gold);
+}
+.check-item .box{
+width:20px;height:20px;
+border:2px solid rgba(255,255,255,0.3);
+border-radius:5px;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-shrink:0;
+font-size:0.7rem;
+transition:all 0.2s;
+}
+.check-item.checked .box{
+background:var(--gold);
+border-color:var(--gold);
+color:#1a1a00;
+}
+
+/* ===== QUOTE ===== */
+.quote{
+font-size:1.15rem;
 font-style:italic;
+color:var(--text);
+margin:8px 0 20px;
 line-height:1.4;
 }
 
-h3{
-font-family:'Cormorant Garamond',serif;
-font-size:clamp(1rem,2.8vw,1.3rem);
-color:var(--gold-light);
-margin-bottom:16px;
-font-weight:500;
+/* ===== FINAL PAGE / VSL ===== */
+.final-banner{
+background:#16a34a;
+color:#fff;
 text-align:center;
-}
-
-p,.text{
-font-size:clamp(0.92rem,2.5vw,1.05rem);
-line-height:1.9;
-color:var(--text-primary);
-margin-bottom:16px;
-}
-
-.text-secondary{color:var(--text-secondary)}
-
-/* Sacred alert box */
-.alert-box{
-background:linear-gradient(135deg,rgba(201,168,76,0.06),rgba(201,168,76,0.02));
-border:1px solid var(--border-gold);
-border-radius:12px;
-padding:24px 28px;
-margin-bottom:24px;
-position:relative;
-overflow:hidden;
-}
-
-.alert-box::before{
-content:'';
-position:absolute;
-top:0;left:0;
-width:100%;height:2px;
-background:linear-gradient(90deg,transparent,var(--gold),transparent);
-}
-
-.alert-box .alert-title{
-font-family:'Cormorant Garamond',serif;
-font-size:0.95rem;
-color:var(--gold);
+padding:14px 16px;
+font-size:0.9rem;
 font-weight:700;
-letter-spacing:3px;
-margin-bottom:14px;
-text-transform:uppercase;
+line-height:1.4;
+margin:-20px -16px 20px;
+}
+.final-banner .gold{color:var(--gold)}
+
+.urgency-text{
+text-align:center;
+color:var(--red);
+font-size:0.85rem;
+font-weight:600;
+margin-bottom:20px;
 }
 
-/* Info box */
-.info-box{
-background:linear-gradient(135deg,rgba(107,127,212,0.06),rgba(107,127,212,0.02));
-border:1px solid rgba(107,127,212,0.2);
-border-radius:12px;
-padding:24px 28px;
+.video-container{
+position:relative;
+width:100%;
+padding-bottom:56.25%;
+background:#000;
+border-radius:14px;
+overflow:hidden;
 margin-bottom:24px;
+cursor:pointer;
 }
-
-.info-box::before{
-content:'';
+.video-container iframe{
 position:absolute;
 top:0;left:0;
-width:100%;height:2px;
-background:linear-gradient(90deg,transparent,var(--blue-light),transparent);
+width:100%;height:100%;
+border:none;
 }
-
-/* Context box */
-.context-box{
-background:rgba(201,168,76,0.04);
-border:1px solid var(--border-gold);
-border-left:3px solid var(--gold);
-border-radius:8px;
-padding:22px 26px;
-margin-bottom:24px;
-font-style:italic;
-color:var(--text-secondary);
-line-height:1.9;
-font-size:0.95rem;
-}
-
-/* Options / Radio buttons */
-.options-group{
+.video-thumb{
+position:absolute;
+top:0;left:0;
+width:100%;height:100%;
 display:flex;
 flex-direction:column;
-gap:12px;
-margin:24px 0;
+align-items:center;
+justify-content:center;
+background:linear-gradient(135deg,#1a0a2e,#0d2f3f,#2d1b4e);
+text-align:center;
+padding:20px;
+}
+.video-thumb .play-btn{
+width:70px;height:70px;
+background:var(--red);
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+margin-bottom:16px;
+font-size:1.8rem;
+}
+.video-thumb .play-text{
+font-size:1rem;
+font-weight:700;
+color:var(--gold);
+margin-bottom:8px;
+}
+.video-thumb .play-sub{
+font-size:0.8rem;
+color:var(--text-dim);
+line-height:1.4;
 }
 
-.option-card{
-background:var(--bg-card);
-border:1px solid var(--border-color);
-border-radius:12px;
-padding:20px 24px;
-cursor:pointer;
-transition:all 0.4s cubic-bezier(0.22,1,0.36,1);
-position:relative;
-overflow:hidden;
+/* OFFER SECTION */
+.offer-section{
+background:var(--bg-light);
+border-radius:16px;
+padding:24px 18px;
+margin:20px 0;
 }
-
-.option-card::before{
-content:'';
-position:absolute;
-top:0;left:0;
-width:0;height:100%;
-background:linear-gradient(90deg,rgba(201,168,76,0.08),transparent);
-transition:width 0.4s ease;
-}
-
-.option-card:hover{
-background:var(--bg-card-hover);
-border-color:rgba(201,168,76,0.3);
-transform:translateY(-2px);
-box-shadow:var(--glow-gold);
-}
-
-.option-card:hover::before{
-width:100%;
-}
-
-.option-card.selected{
-background:rgba(201,168,76,0.08);
-border-color:var(--gold);
-box-shadow:var(--glow-gold);
-}
-
-.option-card.selected::before{
-width:100%;
-}
-
-.option-card .option-title{
-font-family:'Cormorant Garamond',serif;
-font-weight:600;
-font-size:1.1rem;
-color:var(--text-primary);
+.offer-section h2{
+text-align:center;
+font-size:1.3rem;
 margin-bottom:6px;
 }
-
-.option-card .option-desc{
-font-size:0.9rem;
-color:var(--text-secondary);
-line-height:1.7;
-}
-
-/* Checkbox items */
-.checkbox-group{display:flex;flex-direction:column;gap:10px;margin:20px 0}
-
-.checkbox-item{
-display:flex;
-align-items:flex-start;
-gap:14px;
-background:var(--bg-card);
-border:1px solid var(--border-color);
-border-radius:10px;
-padding:16px 18px;
-cursor:pointer;
-transition:all 0.4s cubic-bezier(0.22,1,0.36,1);
-}
-
-.checkbox-item:hover{
-background:var(--bg-card-hover);
-border-color:rgba(201,168,76,0.2);
-transform:translateY(-1px);
-}
-
-.checkbox-item.checked{
-background:rgba(201,168,76,0.06);
-border-color:rgba(201,168,76,0.3);
-}
-
-.checkbox-item .check-box{
-flex-shrink:0;
-width:24px;height:24px;
-border:2px solid var(--text-dim);
-border-radius:6px;
-display:flex;
-align-items:center;
-justify-content:center;
-transition:all 0.3s;
-margin-top:2px;
-font-size:14px;
-}
-
-.checkbox-item.checked .check-box{
-border-color:var(--gold);
-background:var(--gold);
-color:var(--bg-primary);
-}
-
-.checkbox-item .check-label{
-font-size:0.93rem;
-line-height:1.6;
-color:var(--text-primary);
-}
-
-/* Buttons */
-.btn{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-gap:10px;
-font-family:'Cormorant Garamond',serif;
-font-size:clamp(0.95rem,2.5vw,1.1rem);
-font-weight:700;
-letter-spacing:1.5px;
-text-transform:uppercase;
-padding:18px 36px;
-border:none;
-border-radius:10px;
-cursor:pointer;
-transition:all 0.4s cubic-bezier(0.22,1,0.36,1);
-position:relative;
-overflow:hidden;
-text-decoration:none;
-margin-top:16px;
-width:100%;
-max-width:500px;
-}
-
-.btn::before{
-content:'';
-position:absolute;
-top:0;left:-100%;
-width:100%;height:100%;
-background:linear-gradient(90deg,transparent,rgba(255,255,255,0.08),transparent);
-transition:left 0.6s ease;
-}
-
-.btn:hover::before{
-left:100%;
-}
-
-.btn-gold{
-background:linear-gradient(135deg,var(--gold),var(--gold-dim));
-color:#1a1510;
-box-shadow:0 4px 25px rgba(201,168,76,0.25);
-}
-
-.btn-gold:hover{
-box-shadow:0 6px 35px rgba(201,168,76,0.4);
-transform:translateY(-3px);
-}
-
-.btn-blue{
-background:linear-gradient(135deg,var(--blue-royal),var(--blue-deep));
-color:var(--cream);
-box-shadow:0 4px 25px rgba(45,63,143,0.25);
-}
-
-.btn-blue:hover{
-box-shadow:0 6px 35px rgba(45,63,143,0.4);
-transform:translateY(-3px);
-}
-
-.btn-deep{
-background:linear-gradient(135deg,var(--gold),var(--gold-dim));
-color:#fff;
-border:1px solid var(--border-gold);
-box-shadow:0 4px 25px rgba(154,123,45,0.2);
-}
-
-.btn-deep:hover{
-box-shadow:0 6px 35px rgba(154,123,45,0.3);
-transform:translateY(-3px);
-border-color:var(--gold);
-}
-
-.btn-sacred{
-background:linear-gradient(135deg,var(--blue-royal),var(--blue-deep));
-color:#fff;
-border:1px solid rgba(45,63,143,0.3);
-box-shadow:0 4px 25px rgba(45,63,143,0.2);
-}
-
-.btn-sacred:hover{
-box-shadow:0 6px 35px rgba(45,63,143,0.3);
-transform:translateY(-3px);
-border-color:var(--blue-royal);
-}
-
-.btn:disabled{opacity:0.4;cursor:not-allowed;transform:none!important}
-
-.btn-block{display:flex;margin:24px auto 0}
-
-/* Progress bar */
-.progress-bar{
-width:100%;
-max-width:680px;
-height:3px;
-background:rgba(201,168,76,0.1);
-border-radius:2px;
-margin-bottom:32px;
-overflow:hidden;
-}
-
-.progress-fill{
-height:100%;
-background:linear-gradient(90deg,var(--gold-dim),var(--gold),var(--gold-light));
-border-radius:2px;
-transition:width 0.8s cubic-bezier(0.22,1,0.36,1);
-}
-
-/* Loading animation */
-.loading-container{
-display:flex;
-flex-direction:column;
-align-items:center;
-gap:24px;
-margin:50px 0;
-}
-
-.loading-spinner{
-width:56px;height:56px;
-border:2px solid rgba(201,168,76,0.15);
-border-top-color:var(--gold);
-border-radius:50%;
-animation:spin 1.5s cubic-bezier(0.5,0,0.5,1) infinite;
-position:relative;
-}
-
-.loading-spinner::after{
-content:'';
-position:absolute;
-top:4px;left:4px;right:4px;bottom:4px;
-border:2px solid transparent;
-border-bottom-color:var(--blue-light);
-border-radius:50%;
-animation:spin 2s cubic-bezier(0.5,0,0.5,1) infinite reverse;
-}
-
-@keyframes spin{to{transform:rotate(360deg)}}
-
-.loading-text{
-font-family:'Cormorant Garamond',serif;
-font-size:1rem;
-color:var(--gold);
-letter-spacing:3px;
-text-transform:uppercase;
-animation:breathe 2s ease-in-out infinite;
-}
-
-@keyframes breathe{0%,100%{opacity:0.5}50%{opacity:1}}
-
-/* Scroll reveal */
-.scroll-text{
-font-family:'Lora',serif;
-background:var(--bg-card);
-border:1px solid var(--border-color);
-border-radius:8px;
-padding:20px 24px;
-margin:20px 0;
-position:relative;
-font-size:0.9rem;
-line-height:1.8;
-color:var(--blue-light);
-}
-
-.scroll-text::before{
-content:'';
-position:absolute;
-top:0;left:0;
-width:100%;height:2px;
-background:linear-gradient(90deg,transparent,var(--blue-light),transparent);
-}
-
-.scroll-text .line{
-opacity:0;
-animation:revealLine 0.6s ease forwards;
-display:block;
-margin-bottom:4px;
-}
-
-.scroll-text .line.gold{color:var(--gold)}
-.scroll-text .line.cream{color:var(--cream)}
-.scroll-text .line.dim{color:var(--text-dim)}
-
-/* Gallery */
-.gallery{
-display:flex;
-flex-direction:column;
-gap:20px;
-margin:24px 0;
-}
-
-.gallery-item{
-background:var(--bg-card);
-border:1px solid var(--border-color);
-border-radius:14px;
-overflow:hidden;
-transition:all 0.4s cubic-bezier(0.22,1,0.36,1);
-}
-
-.gallery-item:hover{
-border-color:rgba(201,168,76,0.3);
-box-shadow:var(--glow-gold);
-transform:translateY(-3px);
-}
-
-.gallery-img{
-width:100%;
-height:240px;
-background:linear-gradient(135deg,var(--bg-secondary),#e8e2d5);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:3rem;
-position:relative;
-overflow:hidden;
-}
-
-.gallery-img img{
-width:100%;
-height:100%;
-object-fit:cover;
-display:block;
-z-index:1;
-}
-
-.gallery-img::after{
-content:'';
-position:absolute;
-top:0;left:0;
-width:100%;height:100%;
-background:linear-gradient(180deg,transparent 60%,rgba(248,246,241,0.6));
-z-index:2;
-pointer-events:none;
-}
-
-.gallery-img .img-number{
-position:absolute;
-top:14px;left:14px;
-font-family:'Cormorant Garamond',serif;
-font-size:0.75rem;
-color:var(--gold);
-background:rgba(201,168,76,0.1);
-border:1px solid rgba(201,168,76,0.25);
-padding:5px 12px;
-border-radius:6px;
-z-index:2;
-letter-spacing:2px;
-font-weight:600;
-}
-
-.gallery-caption{
-padding:18px 22px;
-}
-
-.gallery-caption .caption-label{
-font-family:'Cormorant Garamond',serif;
-font-size:0.8rem;
-color:var(--gold);
-letter-spacing:2px;
-margin-bottom:10px;
-display:flex;
-align-items:center;
-gap:6px;
-font-weight:600;
-text-transform:uppercase;
-}
-
-.gallery-caption p{
-font-size:0.9rem;
-line-height:1.8;
-color:var(--text-secondary);
-margin:0;
-}
-
-/* Benefits list */
-.benefit-list{
-display:flex;
-flex-direction:column;
-gap:16px;
-margin:24px 0;
-}
-
-.benefit-item{
-background:var(--bg-card);
-border:1px solid var(--border-color);
-border-radius:14px;
-padding:24px;
-position:relative;
-transition:all 0.4s cubic-bezier(0.22,1,0.36,1);
-overflow:hidden;
-}
-
-.benefit-item::before{
-content:'';
-position:absolute;
-top:0;left:0;
-width:3px;height:100%;
-background:linear-gradient(180deg,var(--gold),transparent);
-border-radius:3px 0 0 3px;
-}
-
-.benefit-item:hover{
-border-color:rgba(201,168,76,0.25);
-background:var(--bg-card-hover);
-transform:translateY(-2px);
-box-shadow:var(--glow-gold);
-}
-
-.benefit-item .benefit-icon{
-font-size:1.5rem;
-margin-bottom:12px;
-}
-
-.benefit-item .benefit-title{
-font-family:'Cormorant Garamond',serif;
-font-size:1.1rem;
-color:var(--gold);
-margin-bottom:10px;
-font-weight:600;
-}
-
-.benefit-item .benefit-desc{
-font-size:0.9rem;
-line-height:1.8;
-color:var(--text-secondary);
-}
-
-/* Result banner */
-.result-banner{
-background:linear-gradient(135deg,rgba(154,123,45,0.08),rgba(255,255,255,0.95));
-border:1px solid var(--gold);
-border-radius:16px;
-padding:36px;
+.offer-section .offer-sub{
 text-align:center;
-margin:20px 0;
-position:relative;
-overflow:hidden;
-}
-
-.result-banner::before{
-content:'';
-position:absolute;
-top:-1px;left:-1px;right:-1px;bottom:-1px;
-background:linear-gradient(135deg,var(--gold),transparent 30%,transparent 70%,var(--blue-light));
-border-radius:16px;
-z-index:-1;
-opacity:0.3;
-}
-
-.result-badge{
-font-family:'Cormorant Garamond',serif;
-font-size:0.85rem;
-letter-spacing:4px;
-color:var(--gold);
-margin-bottom:16px;
-text-transform:uppercase;
-font-weight:600;
-}
-
-.result-title{
-font-family:'Cormorant Garamond',serif;
-font-size:clamp(1.3rem,4vw,1.9rem);
-color:var(--cream);
-margin-bottom:12px;
-font-weight:600;
-}
-
-.analysis-grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
-gap:10px;
-margin:20px 0;
-}
-
-.analysis-item{
-background:rgba(201,168,76,0.06);
-border:1px solid rgba(201,168,76,0.2);
-border-radius:8px;
-padding:12px;
-text-align:center;
-font-family:'Cormorant Garamond',serif;
-font-size:0.9rem;
-color:var(--gold-light);
-font-weight:500;
-}
-
-/* Sacred player */
-.sacred-player{
-background:linear-gradient(135deg,#0e0c18,#141020);
-border:1px solid var(--border-gold);
-border-radius:16px;
-padding:32px;
-margin:24px 0;
-position:relative;
-overflow:hidden;
-}
-
-.sacred-player::before{
-content:'';
-position:absolute;
-top:0;left:0;
-width:100%;height:1px;
-background:linear-gradient(90deg,transparent,var(--gold),transparent);
-}
-
-.sacred-player::after{
-content:'';
-position:absolute;
-bottom:0;left:0;
-width:100%;height:1px;
-background:linear-gradient(90deg,transparent,var(--gold),transparent);
-}
-
-.player-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:24px;
-font-family:'Cormorant Garamond',serif;
-font-size:0.8rem;
-letter-spacing:2px;
-}
-
-.player-header .status{
-display:flex;
-align-items:center;
-gap:8px;
-}
-
-.status-dot{
-width:8px;height:8px;
-border-radius:50%;
-animation:glow-pulse 2.5s ease-in-out infinite;
-}
-
-.status-dot.gold{background:var(--gold)}
-.status-dot.blue{background:var(--blue-light)}
-.status-dot.warm{background:#c97a4c}
-
-@keyframes glow-pulse{0%,100%{opacity:1;box-shadow:0 0 4px currentColor}50%{opacity:0.5;box-shadow:0 0 8px currentColor}}
-
-.player-content{
-height:200px;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-gap:20px;
-}
-
-.play-btn{
-width:72px;height:72px;
-border-radius:50%;
-border:2px solid var(--gold);
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:pointer;
-transition:all 0.4s cubic-bezier(0.22,1,0.36,1);
-background:rgba(201,168,76,0.08);
-}
-
-.play-btn:hover{
-background:rgba(201,168,76,0.15);
-box-shadow:0 0 40px rgba(201,168,76,0.2);
-transform:scale(1.08);
-}
-
-.play-btn svg{
-width:28px;height:28px;
-fill:var(--gold);
-margin-left:4px;
-}
-
-/* Privacy badge */
-.privacy-badge{
-display:flex;
-align-items:center;
-gap:10px;
-font-size:0.8rem;
 color:var(--text-dim);
-margin-top:20px;
-padding:14px 18px;
-background:rgba(201,168,76,0.03);
-border:1px solid rgba(201,168,76,0.08);
-border-radius:8px;
-line-height:1.6;
-}
-
-/* Counter animation */
-.counter{
-font-family:'Cormorant Garamond',serif;
-font-size:2.2rem;
-color:var(--gold);
-text-align:center;
-margin:16px 0;
-font-weight:600;
-}
-
-/* Separator */
-.separator{
-width:100%;
-height:1px;
-background:linear-gradient(90deg,transparent,var(--border-gold),var(--gold-dim),var(--border-gold),transparent);
-margin:28px 0;
-}
-
-/* Story section */
-.story{
-background:var(--bg-card);
-border:1px solid var(--border-color);
-border-radius:14px;
-padding:28px;
-margin:20px 0;
-line-height:2;
-position:relative;
-}
-
-.story::before{
-content:'\201C';
-font-size:5rem;
-color:var(--gold);
-opacity:0.12;
-position:absolute;
-top:4px;left:18px;
-font-family:'Cormorant Garamond',serif;
-line-height:1;
-}
-
-.story p{
-padding-left:10px;
-color:var(--text-secondary);
-font-size:0.95rem;
-}
-
-/* Price comparison */
-.price-compare{
-display:flex;
-flex-direction:column;
-gap:12px;
-margin:20px 0;
-}
-
-.price-item{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:16px 20px;
-background:var(--bg-card);
-border:1px solid var(--border-color);
-border-radius:10px;
-transition:all 0.3s;
-}
-
-.price-item .price-label{
-font-size:0.92rem;
-color:var(--text-secondary);
-}
-
-.price-item .price-value{
-font-family:'Cormorant Garamond',serif;
-font-size:1.05rem;
-color:var(--text-dim);
-text-decoration:line-through;
-font-weight:600;
-}
-
-.price-item.highlight{
-background:rgba(201,168,76,0.06);
-border-color:var(--gold);
-box-shadow:var(--glow-gold);
-}
-
-.price-item.highlight .price-value{
-color:var(--gold);
-text-decoration:none;
-font-size:1.4rem;
-}
-
-/* Blocked screen */
-.blocked-overlay{
-position:fixed;
-top:0;left:0;
-width:100%;height:100%;
-background:rgba(248,246,241,0.97);
-display:none;
-align-items:center;
-justify-content:center;
-z-index:9999;
-}
-
-.blocked-overlay.active{display:flex}
-
-.blocked-content{
-text-align:center;
-padding:40px;
-}
-
-.blocked-content h1{
-color:var(--gold);
-font-size:2rem;
+font-size:0.9rem;
 margin-bottom:20px;
-font-family:'Cormorant Garamond',serif;
 }
-
-.blocked-content p{
+.stack-item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px 0;
+border-bottom:1px solid rgba(255,255,255,0.08);
+font-size:0.9rem;
+}
+.stack-item .name{flex:1}
+.stack-item .gift{
+color:var(--gold);
+font-size:0.75rem;
+font-weight:700;
+margin-right:8px;
+}
+.stack-item .price{
+text-decoration:line-through;
 color:var(--text-dim);
-font-size:1.1rem;
-font-family:'Lora',serif;
+font-weight:600;
+}
+.stack-item .bonus-desc{
+font-size:0.78rem;
+color:var(--text-dim);
+}
+.total-line{
+display:flex;
+justify-content:space-between;
+padding:14px 0;
+font-weight:700;
+font-size:1rem;
+border-top:2px solid rgba(255,255,255,0.15);
+margin-top:4px;
+}
+.total-line .price{
+text-decoration:line-through;
+color:var(--text-dim);
+}
+.final-price{
+text-align:center;
+margin:20px 0 8px;
+font-size:0.9rem;
+color:var(--text-dim);
+}
+.final-price .amount{
+display:block;
+font-size:2.4rem;
+font-weight:800;
+color:var(--gold);
+margin-top:4px;
 }
 
-/* Oath styling */
-.oath-box{
-background:linear-gradient(135deg,rgba(201,168,76,0.06),rgba(107,127,212,0.04));
-border:1px solid var(--gold);
+.btn-cta{
+display:block;
+width:100%;
+padding:18px;
+background:var(--gold);
+color:#1a1a00;
+font-size:1.05rem;
+font-weight:800;
+border:none;
 border-radius:14px;
-padding:28px;
+cursor:pointer;
+margin:12px 0;
+transition:all 0.2s;
+text-align:center;
+text-decoration:none;
+}
+.btn-cta:hover{background:var(--gold-dark);transform:scale(1.02)}
+
+.scarcity-section{
+text-align:center;
+margin:20px 0;
+}
+.scarcity-section .vagas{
+font-size:1rem;
+font-weight:700;
+color:var(--red);
+margin-bottom:8px;
+}
+.countdown{
+display:inline-flex;
+gap:6px;
+margin-top:8px;
+}
+.countdown .unit{
+background:rgba(255,255,255,0.1);
+padding:8px 12px;
+border-radius:8px;
+font-weight:700;
+font-size:1.1rem;
+min-width:48px;
+text-align:center;
+}
+.countdown .sep{
+font-size:1.1rem;
+font-weight:700;
+display:flex;
+align-items:center;
+}
+
+.guarantee{
 text-align:center;
 margin:24px 0;
-position:relative;
-overflow:hidden;
+padding:20px;
+border:1.5px solid rgba(255,255,255,0.1);
+border-radius:14px;
 }
-
-.oath-box::before,.oath-box::after{
-content:'';
-position:absolute;
-width:60px;height:60px;
-border:1px solid rgba(201,168,76,0.15);
-border-radius:50%;
+.guarantee .shield{font-size:2.5rem;margin-bottom:10px}
+.guarantee h3{
+font-size:1rem;
+margin-bottom:8px;
+color:var(--gold);
 }
-
-.oath-box::before{top:-20px;left:-20px}
-.oath-box::after{bottom:-20px;right:-20px}
-
-.oath-text{
-font-family:'Cormorant Garamond',serif;
-font-size:1.1rem;
-color:var(--text-primary);
-line-height:2;
-}
-
-/* Footer */
-.screen-footer{
-margin-top:auto;
-padding-top:30px;
-text-align:center;
-font-size:0.75rem;
+.guarantee p{
+font-size:0.85rem;
 color:var(--text-dim);
-font-family:'Cormorant Garamond',serif;
-letter-spacing:2px;
+line-height:1.5;
 }
 
-/* Star of David decorative element */
-.star-decoration{
-text-align:center;
-margin:16px 0;
-font-size:2rem;
-opacity:0.4;
-animation:slowRotate 20s linear infinite;
-display:inline-block;
+/* ===== OATH IMAGE ===== */
+.oath-img{
+width:100%;
+max-width:400px;
+border-radius:14px;
+margin:16px auto;
+display:block;
 }
 
-@keyframes slowRotate{to{transform:rotate(360deg)}}
-
-/* Responsive */
-@media(max-width:600px){
-.container{padding:12px}
-.screen{padding:12px;padding-top:24px}
-.alert-box,.info-box,.context-box,.story{padding:18px}
-.option-card{padding:16px 18px}
-.gallery-img{height:180px}
-.btn{padding:16px 24px;font-size:0.9rem}
-}
-
-/* Pulse dot for live indicator */
-.live-dot{
-display:inline-block;
-width:8px;height:8px;
-background:var(--gold);
-border-radius:50%;
-margin-right:6px;
-animation:glow-pulse 2s ease-in-out infinite;
-}
-
-/* Floating particles animation */
-@keyframes float-up{
-0%{transform:translateY(100vh) scale(0);opacity:0}
-10%{opacity:1}
-90%{opacity:1}
-100%{transform:translateY(-10vh) scale(1);opacity:0}
+/* ===== RESPONSIVE ===== */
+@media(max-width:400px){
+h1{font-size:1.35rem}
+.gender-card img{height:160px}
+.checkbox-grid{gap:8px}
+.check-item{padding:10px 10px;font-size:0.8rem}
 }
 </style>
 </head>
 <body>
 
-<canvas id="particles-canvas"></canvas>
-
-<!-- BLOCKED OVERLAY -->
-<div class="blocked-overlay" id="blockedOverlay">
-<div class="blocked-content">
-<h1>Acesso Negado</h1>
-<p>O caminho se fechou. Que a paz esteja contigo.</p>
-<p style="margin-top:20px;color:var(--gold-dim);font-family:'Cormorant Garamond',serif;font-size:0.9rem;letter-spacing:2px">
-Shalom
-</p>
-</div>
+<!-- PROGRESS BAR -->
+<div class="progress-wrap" id="progressWrap" style="display:none">
+<div class="progress-bar" id="progressBar"></div>
 </div>
 
-<!-- ============ TELA 1 ============ -->
+<!-- ===== ETAPA 1: SELEÇÃO DE GÊNERO ===== -->
 <div class="screen active" id="screen1">
-<div class="container">
-<div class="progress-bar"><div class="progress-fill" style="width:0%"></div></div>
+<div style="text-align:center;padding-top:30px">
+<h1 style="color:var(--gold);font-size:1.8rem;margin-bottom:6px">Teste de Qualificação</h1>
+<p class="subtitle" style="margin-bottom:20px">Descubra em 30 segundos se você pode receber a <strong style="color:#fff">Oração Judaica da Prosperidade.</strong></p>
 
-<div class="ornament">✦ ✦ ✦</div>
-<h1>As 12 Frequências Sagradas</h1>
-<h2>Teste de Acesso — Protocolo de Iniciação</h2>
-
-<div class="alert-box">
-<div class="alert-title">✦ Protocolo de Acesso Ativado</div>
-<p style="margin:0;line-height:1.9;color:var(--text-secondary)">
-Este conteúdo foi <strong style="color:var(--gold)">restrito em 12 países</strong>. Por segurança, este teste foi configurado para ser feito <strong style="color:var(--cream)">apenas 1 vez por dispositivo</strong>.
-</p>
-<p style="margin-top:14px;color:var(--text-dim);font-style:italic;font-size:0.92rem">
-"O que está oculto será revelado ao que busca com o coração..."
-</p>
-<p style="margin-top:8px;color:var(--gold);font-weight:600;font-size:0.92rem">
-Responda com atenção. Não haverá segunda chance.
-</p>
+<div style="text-align:left;margin-bottom:24px">
+<p style="font-weight:600;margin-bottom:12px;font-size:0.95rem">Este teste rápido vai revelar:</p>
+<ul class="check-list">
+<li><span class="num">1.</span> Se você tem o perfil para receber as 12 palavras</li>
+<li><span class="num">2.</span> O que está bloqueando sua prosperidade hoje</li>
+<li><span class="num">3.</span> Se as palavras vão funcionar no seu caso</li>
+</ul>
 </div>
 
-<div class="separator"></div>
+<p style="font-size:0.95rem;margin-bottom:16px">✨ <strong>Selecione seu gênero para iniciar:</strong></p>
 
-<h3>Antes de prosseguir, as frequências precisam saber: você é...</h3>
-
-<div class="options-group" id="identityOptions">
-<div class="option-card" onclick="selectOption('identityOptions',this)" data-value="masculino">
-<div class="option-title">Homem</div>
-<div class="option-desc">Masculino</div>
+<div class="gender-cards">
+<div class="gender-card" onclick="selectGender(this,'masculino')">
+<img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face" alt="Homem">
+<div class="label">Homem <span class="arrow">›</span></div>
 </div>
-<div class="option-card" onclick="selectOption('identityOptions',this)" data-value="feminino">
-<div class="option-title">Mulher</div>
-<div class="option-desc">Feminino</div>
-</div>
-<div class="option-card" onclick="selectOption('identityOptions',this)" data-value="outro">
-<div class="option-title">Prefiro não especificar</div>
-<div class="option-desc">Outro</div>
+<div class="gender-card" onclick="selectGender(this,'feminino')">
+<img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face" alt="Mulher">
+<div class="label">Mulher <span class="arrow">›</span></div>
 </div>
 </div>
 
-<div class="privacy-badge">
-🔒 Seus dados são 100% anônimos. Nenhuma informação pessoal é coletada ou compartilhada.
-</div>
-
-<button class="btn btn-gold btn-block" id="btn1" disabled onclick="goToScreen(2)">
-Iniciar Teste Sagrado
-</button>
-
-<div class="screen-footer">
-✦ Conexão Segura ✦ Acesso Protegido ✦
+<div class="scarcity-badge">
+<span class="red-dot"></span>
+Apenas 2.8% são aprovados neste teste
 </div>
 </div>
 </div>
 
-<!-- ============ TELA 2 ============ -->
+<!-- ===== ETAPA 2: FAIXA ETÁRIA ===== -->
 <div class="screen" id="screen2">
-<div class="container">
-<div class="progress-bar"><div class="progress-fill" style="width:7%"></div></div>
-
-<h1>Diagnóstico Espiritual</h1>
-<h2>Você está preso no ciclo da escassez programada?</h2>
-
-<p style="text-align:center;color:var(--text-secondary)">
-Marque se você se identifica com <strong style="color:var(--gold)">pelo menos 3</strong> dessas situações abaixo...
-</p>
-
-<div class="checkbox-group" id="checkboxGroup">
-<div class="checkbox-item" onclick="toggleCheck(this)">
-<div class="check-box"></div>
-<div class="check-label">Dinheiro some misteriosamente — sempre que entra, "emergências" aparecem do nada</div>
+<div style="padding-top:60px">
+<h2 style="text-align:center;font-size:1.4rem">Qual a sua idade?</h2>
+<div style="margin-top:24px">
+<div class="option-btn" onclick="selectAndGo(this,'age','18-24',3)">18-24 <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'age','25-34',3)">25-34 <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'age','35-44',3)">35-44 <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'age','45+',3)">+45 <span class="arrow">›</span></div>
 </div>
-<div class="checkbox-item" onclick="toggleCheck(this)">
-<div class="check-box"></div>
-<div class="check-label">Crises econômicas "coincidem" com seu momento de prosperidade</div>
-</div>
-<div class="checkbox-item" onclick="toggleCheck(this)">
-<div class="check-box"></div>
-<div class="check-label">Você trabalha mais que seus pais, mas tem menos poder aquisitivo</div>
-</div>
-<div class="checkbox-item" onclick="toggleCheck(this)">
-<div class="check-box"></div>
-<div class="check-label">Sente que está sendo controlado por sistemas financeiros que não entende</div>
-</div>
-<div class="checkbox-item" onclick="toggleCheck(this)">
-<div class="check-box"></div>
-<div class="check-label">Os bancos sempre ganham, mesmo quando você perde tudo</div>
-</div>
-<div class="checkbox-item" onclick="toggleCheck(this)">
-<div class="check-box"></div>
-<div class="check-label">Crises mundiais surgem exatamente quando a economia ia melhorar</div>
-</div>
-<div class="checkbox-item" onclick="toggleCheck(this)">
-<div class="check-box"></div>
-<div class="check-label">Sente um bloqueio invisível — como se algo te impedisse de prosperar</div>
-</div>
-<div class="checkbox-item" onclick="toggleCheck(this)">
-<div class="check-box"></div>
-<div class="check-label">Desconfia que existe um jogo sendo jogado, mas você não conhece as regras</div>
-</div>
-<div class="checkbox-item" onclick="toggleCheck(this)">
-<div class="check-box"></div>
-<div class="check-label">Sabe que existe mais por trás dos conflitos mundiais do que contam na mídia</div>
 </div>
 </div>
 
-<button class="btn btn-gold btn-block" id="btn2" disabled onclick="goToScreen(3)">
-Sim, quero a verdade. Prosseguir.
-</button>
-</div>
-</div>
-
-<!-- ============ TELA 3 ============ -->
+<!-- ===== ETAPA 3: DOR FINANCEIRA ===== -->
 <div class="screen" id="screen3">
-<div class="container">
-<div class="progress-bar"><div class="progress-fill" style="width:15%"></div></div>
-
-<div class="loading-container" id="loading3">
-<div class="loading-spinner"></div>
-<div class="loading-text">Analisando seu perfil...</div>
-</div>
-
-<div id="content3" style="display:none">
-<div class="alert-box">
-<div class="alert-title">✦ Análise Completa</div>
-<p style="margin:0;color:var(--text-primary);font-size:1.05rem;line-height:1.9">
-Você está sob influência do <strong style="color:var(--gold)">Ciclo da Escassez Geracional</strong> — um padrão transmitido há séculos que mantém famílias inteiras em estado de pobreza controlada.
-</p>
-</div>
-
-<div class="scroll-text">
-<div class="line" style="animation-delay:0.5s;color:var(--blue-light)">Escaneando campo energético...</div>
-<div class="line" style="animation-delay:1s;color:var(--gold-light)">Padrão detectado: Escassez Geracional</div>
-<div class="line gold" style="animation-delay:1.5s">Nível de influência: Profundo</div>
-<div class="line" style="animation-delay:2s;color:var(--cream)">Gerações afetadas: 3+</div>
-<div class="line" style="animation-delay:2.5s;color:var(--blue-light)">Buscando antídoto nos manuscritos antigos...</div>
-<div class="line gold" style="animation-delay:3s">Antídoto encontrado: As 12 Frequências Sagradas</div>
-<div class="line" style="animation-delay:3.5s;color:var(--cream)">Status: Acesso temporário disponível</div>
-</div>
-
-<div class="info-box">
-<p style="margin:0;text-align:center;font-size:1rem;line-height:1.9">
-Mas existe uma <strong style="color:var(--gold)">brecha</strong>...<br>
-As <strong style="color:var(--gold)">12 Frequências Sagradas</strong> foram reveladas.
-</p>
-</div>
-
-<button class="btn btn-blue btn-block" onclick="goToScreen(4)">
-Continuar Análise
-</button>
+<div style="padding-top:60px">
+<h2>Quando dinheiro entra na sua vida, o que acontece logo depois?</h2>
+<div style="margin-top:24px">
+<div class="option-btn" onclick="selectAndGo(this,'q1','emergencia',4)"><span class="emoji">📘</span> Sempre surge uma emergência ou conta inesperada <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'q1','desaparece',4)"><span class="emoji">🕯️</span> Desaparece sem eu entender como <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'q1','parado',4)"><span class="emoji">🙌</span> Fica parado, mas com medo de gastar <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'q1','multiplica',4)"><span class="emoji">🙏</span> Se multiplica naturalmente <span class="arrow">›</span></div>
 </div>
 </div>
 </div>
 
-<!-- ============ TELA 4 ============ -->
+<!-- ===== ETAPA 4: CURIOSIDADE / ANCORAGEM ===== -->
 <div class="screen" id="screen4">
-<div class="container">
-<div class="progress-bar"><div class="progress-fill" style="width:22%"></div></div>
-
-<h1>Você já viu isso?</h1>
-<h2>Preste atenção nestes sinais.</h2>
-
-<div class="gallery">
-<div class="gallery-item">
-<div class="gallery-img">
-<span class="img-number">SINAL 01</span>
-<img src="https://i.ibb.co/Wv7hCWvY/reuniao.jpg" alt="Reunião de líderes mundiais">
-</div>
-<div class="gallery-caption">
-<div class="caption-label">Evidência Documentada</div>
-<p>Todo presidente dos EUA faz isso antes de tomar posse. É um ritual de submissão a uma ordem mundial. Eles juram lealdade a algo que você não vê na TV.</p>
-</div>
-</div>
-
-<div class="gallery-item">
-<div class="gallery-img">
-<span class="img-number">SINAL 02</span>
-<img src="https://i.ibb.co/hFNcNNRc/freepik-gere-a-imagem-do-grande-selo-dos-estados-unidos-o-5215.png" alt="Grande Selo dos Estados Unidos">
-</div>
-<div class="gallery-caption">
-<div class="caption-label">Evidência Documentada</div>
-<p>O olho que tudo vê no topo da pirâmide inacabada. "Novus Ordo Seclorum" = Nova Ordem dos Séculos. Eles estampam na nota de 1 dólar e você achava que era só enfeite.</p>
-</div>
-</div>
-
-<div class="gallery-item">
-<div class="gallery-img">
-<span class="img-number">SINAL 03</span>
-<img src="https://i.ibb.co/0yvtV3wz/elon03-1200x900.jpg" alt="Fórum Econômico Mundial">
-</div>
-<div class="gallery-caption">
-<div class="caption-label">Evidência Documentada</div>
-<p>O Fórum Econômico Mundial declarou: "Você não terá nada e será feliz." Enquanto isso, eles constroem bunkers na Nova Zelândia.</p>
-</div>
-</div>
-
-<div class="gallery-item">
-<div class="gallery-img">
-<span class="img-number">SINAL 04</span>
-<img src="https://i.ibb.co/BHd4whqc/download-28.jpg" alt="Agenda 2030 e moeda digital">
-</div>
-<div class="gallery-caption">
-<div class="caption-label">Evidência Documentada</div>
-<p>A Agenda 2030 prevê o fim do dinheiro físico. Moeda digital programável. Eles poderão CONGELAR seus recursos com um clique.</p>
-</div>
-</div>
-
-<div class="gallery-item">
-<div class="gallery-img">
-<span class="img-number">SINAL 05</span>
-<img src="https://i.ibb.co/sv76s7Hv/download-26.jpg" alt="David Rockefeller">
-</div>
-<div class="gallery-caption">
-<div class="caption-label">Evidência Documentada</div>
-<p>David Rockefeller disse: "Estamos à beira de uma ordem mundial global. Precisamos de um governo mundial." Isso foi em 1973. Você achou que era teoria da conspiração?</p>
+<div style="padding-top:60px">
+<h2>Você sabia que as famílias judaicas controlam <span class="gold">40% da riqueza</span> dos EUA sendo apenas 2% da população?</h2>
+<div style="margin-top:24px">
+<div class="option-btn" onclick="selectAndGo(this,'q2','nao_sabia',5)"><span class="emoji">🤯</span> Não fazia ideia disso <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'q2','ja_ouvi',5)"><span class="emoji">🤔</span> Já ouvi algo sobre <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'q2','perguntei',5)"><span class="emoji">❓</span> Sim, sempre me perguntei como conseguem <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'q2','coincidencia',5)"><span class="emoji">🤔</span> É coincidência <span class="arrow">›</span></div>
 </div>
 </div>
 </div>
 
-<div class="alert-box">
-<p style="margin:0;text-align:center;font-size:1rem;line-height:1.9;color:var(--text-primary)">
-Essas imagens não são coincidência. São <strong style="color:var(--gold)">PROVAS</strong>. O sistema que controla sua vida tem símbolos, rituais e uma agenda clara. E você está prestes a descobrir como <strong style="color:var(--blue-soft)">QUEBRAR esse código</strong>.
-</p>
-</div>
-
-<button class="btn btn-deep btn-block" onclick="goToScreen(5)">
-Quero ver as provas por trás disso
-</button>
-</div>
-</div>
-
-<!-- ============ TELA 5 ============ -->
+<!-- ===== ETAPA 5: INTERSTITIAL - REVELAÇÃO ===== -->
 <div class="screen" id="screen5">
-<div class="container">
-<div class="progress-bar"><div class="progress-fill" style="width:30%"></div></div>
-
-<h1>A História por trás do Segredo</h1>
-<h2>Como um homem simples descobriu o que as elites escondiam há séculos</h2>
-
-<div class="story">
-<p>Imagine um homem simples... Em <strong style="color:var(--gold)">1952</strong>, um jardineiro analfabeto chamado José encontrou papéis queimados nos fundos de um casarão em São Paulo.</p>
-<p>Eram os manuscritos originais do <strong style="color:var(--gold)">Códice da Abundância</strong>, um livro de 1420 que pertencera à família Médici, os banqueiros que financiavam o Vaticano e as guerras europeias.</p>
-<p>O que José não sabia é que aqueles símbolos eram <strong style="color:var(--blue-soft)">os mesmos que aparecem no Grande Selo dos EUA</strong>. Os mesmos que os presidentes invocam em Jerusalém. Os mesmos que as famílias mais poderosas usam há séculos para controlar a riqueza mundial.</p>
-<p>José ativou as frequências. Em <strong style="color:var(--gold-light)">40 dias</strong>, sua vida mudou. Em 1 ano, ele era dono de terras e negócios.</p>
-<p>Atraiu a atenção de <strong style="color:var(--gold)">pessoas poderosas</strong>. Em 1953, ele desapareceu.</p>
-<p style="color:var(--blue-soft);font-weight:600">Mas os manuscritos sobreviveram. E agora estão aqui.</p>
-</div>
-
-<button class="btn btn-blue btn-block" onclick="goToScreen(6)">
-Continuar para as Perguntas de Acesso
-</button>
+<div class="interstitial">
+<img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=400&fit=crop" alt="Reunião histórica" style="filter:sepia(0.7) contrast(1.1)">
+<p style="font-size:1.15rem;font-style:italic">"Os Rothschild, Rockefeller, Goldman... <strong>todos conheciam o segredo...</strong>"</p>
+<button class="btn-primary" onclick="goToScreen(6)">Continuar</button>
 </div>
 </div>
 
-<!-- ============ TELA 6 (Pergunta 1) ============ -->
+<!-- ===== ETAPA 6: FRUSTRAÇÃO COM LEI DA ATRAÇÃO ===== -->
 <div class="screen" id="screen6">
-<div class="container">
-<div class="progress-bar"><div class="progress-fill" style="width:38%"></div></div>
-
-<h1>Pergunta 1 de 5</h1>
-<h2>Mapeando o padrão que bloqueia sua prosperidade...</h2>
-
-<div class="context-box">
-Assim como um médico precisa de exames antes de receitar o remédio, as frequências precisam identificar qual versão do bloqueio da escassez está presente no seu campo. Existem 7 padrões diferentes. Sua resposta vai determinar qual protocolo de ativação você receberá.
+<div style="padding-top:60px">
+<h2>Você já tentou <span class="gold">Lei da Atração,</span> pensamento positivo ou manifestação?</h2>
+<div style="margin-top:24px">
+<div class="option-btn" onclick="selectAndGo(this,'q3','nunca_funcionou',7)">Sim, várias vezes e NUNCA funcionou direito <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'q3','temporarios',7)">Tentei mas os resultados foram temporários <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'q3','nunca_tentei',7)">Nunca tentei seriamente <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'q3','funcionou',7)">Funcionou perfeitamente para mim <span class="arrow">›</span></div>
 </div>
-
-<p style="font-weight:600;color:var(--gold);text-align:center">
-Quando o dinheiro finalmente entra na sua vida, qual é o padrão exato do que acontece?
-</p>
-
-<div class="options-group" id="q1Options">
-<div class="option-card" onclick="selectOption('q1Options',this)">
-<div class="option-title">"Modo Crise Imediata"</div>
-<div class="option-desc">Aparece uma emergência familiar, um problema no carro, uma multa inesperada. Como se algo sugasse qualquer sobra.</div>
-</div>
-<div class="option-card" onclick="selectOption('q1Options',this)">
-<div class="option-title">"Modo Dissolução Invisível"</div>
-<div class="option-desc">O dinheiro simplesmente desaparece em pequenas despesas, taxas bancárias, juros, compras impulsivas que você não entende de onde vieram.</div>
-</div>
-<div class="option-card" onclick="selectOption('q1Options',this)">
-<div class="option-title">"Modo Congelamento"</div>
-<div class="option-desc">Você trava. Não investe, não gasta, não aproveita. O dinheiro fica parado perdendo valor, enquanto você sente culpa por tê-lo.</div>
-</div>
-<div class="option-card" onclick="selectOption('q1Options',this)">
-<div class="option-title">"Modo Raro"</div>
-<div class="option-desc">Ele se multiplica, mas você percebe que isso acontece apenas quando você "esquece" as regras do sistema. Se marcou essa, você já teve um gostinho do que é possível.</div>
 </div>
 </div>
 
-<button class="btn btn-gold btn-block" id="btnQ1" disabled onclick="goToScreen(7)">
-Próxima Pergunta
-</button>
-</div>
-</div>
-
-<!-- ============ TELA 7 (Pergunta 2) ============ -->
+<!-- ===== ETAPA 7: COMPARAÇÃO SOCIAL ===== -->
 <div class="screen" id="screen7">
-<div class="container">
-<div class="progress-bar"><div class="progress-fill" style="width:46%"></div></div>
-
-<h1>Pergunta 2 de 5</h1>
-<h2>A espiritualidade que te ensinaram foi adulterada. Veja como.</h2>
-
-<div class="context-box">
-O que você está prestes a descobrir é por que 97% das pessoas que tentam técnicas espirituais de prosperidade falham. Não é culpa sua. As técnicas "oficiais" foram deliberadamente simplificadas para manter as massas calmas, enquanto os verdadeiros métodos permaneciam ocultos.
+<div style="padding-top:60px">
+<p style="font-size:0.9rem;color:var(--text-dim);margin-bottom:6px">Você já se perguntou:</p>
+<p class="quote">"Por que fulano que trabalha menos tem mais que eu?"</p>
+<div style="margin-top:20px">
+<div class="option-btn highlight-first" onclick="selectAndGo(this,'q4','frustra',8)">Sim, isso me frustra profundamente <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'q4','as_vezes',8)">Às vezes penso nisso <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'q4','raramente',8)">Raramente <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'q4','nunca',8)">Nunca <span class="arrow">›</span></div>
 </div>
-
-<p style="font-weight:600;color:var(--gold);text-align:center">
-Qual foi seu resultado real com a Lei da Atração, visualização ou outras técnicas?
-</p>
-
-<div class="options-group" id="q2Options">
-<div class="option-card" onclick="selectOption('q2Options',this)">
-<div class="option-title">"Efeito Placebo Invertido"</div>
-<div class="option-desc">Funcionou no começo, mas depois tudo desmoronou pior que antes. Como se houvesse uma correção dupla.</div>
-</div>
-<div class="option-card" onclick="selectOption('q2Options',this)">
-<div class="option-title">"Efeito Gangorra"</div>
-<div class="option-desc">Melhorava um pouco, mas sempre voltava ao zero. Como um peso que insiste em cair.</div>
-</div>
-<div class="option-card" onclick="selectOption('q2Options',this)">
-<div class="option-title">"Intuição do Sabotado"</div>
-<div class="option-desc">Nunca funcionou direito, e no fundo você sentia que aquilo era "espiritualidade de supermercado" — algo feito para te entreter, não para te libertar.</div>
-</div>
-<div class="option-card" onclick="selectOption('q2Options',this)">
-<div class="option-title">"Nunca Caí Nessa"</div>
-<div class="option-desc">Você sempre desconfiou que pensar positivo sem agir no mundo real era conversa pra boi dormir.</div>
 </div>
 </div>
 
-<button class="btn btn-gold btn-block" id="btnQ2" disabled onclick="goToScreen(8)">
-Próxima Pergunta
-</button>
-</div>
-</div>
-
-<!-- ============ TELA 8 (Pergunta 3) ============ -->
+<!-- ===== ETAPA 8: INTERSTITIAL - FREQUÊNCIAS ===== -->
 <div class="screen" id="screen8">
-<div class="container">
-<div class="progress-bar"><div class="progress-fill" style="width:54%"></div></div>
-
-<h1>Pergunta 3 de 5</h1>
-<h2>A pergunta que separa os escolhidos dos demais</h2>
-
-<div class="context-box">
-Esta é a pergunta mais importante do teste. Ela mede se seu espírito já está preparado para receber informações de alta frequência. A maioria falha porque escolhe baseado no medo. Os poucos que passam... escolhem baseados na visão.
-</div>
-
-<p style="font-weight:600;color:var(--gold);text-align:center">
-Imagine que amanhã o sistema financeiro mundial entre em colapso total. O que muda primeiro na sua vida se você já tiver as Frequências ativadas?
-</p>
-
-<div class="options-group" id="q3Options">
-<div class="option-card" onclick="selectOption('q3Options',this)">
-<div class="option-title">"Paz Inabalável"</div>
-<div class="option-desc">Enquanto todos entram em pânico, você permanece tranquilo. Porque sabe que sua prosperidade nunca dependeu do sistema.</div>
-</div>
-<div class="option-card" onclick="selectOption('q3Options',this)">
-<div class="option-title">"Saúde Autônoma"</div>
-<div class="option-desc">Você finalmente pode cuidar do corpo sem depender de sistemas que te tratam como número.</div>
-</div>
-<div class="option-card" onclick="selectOption('q3Options',this)">
-<div class="option-title">"Proteção da Família"</div>
-<div class="option-desc">Você se torna o porto seguro da sua família. O líder que eles procurarão quando tudo desmoronar.</div>
-</div>
-<div class="option-card" onclick="selectOption('q3Options',this)">
-<div class="option-title">"Todas Acima + Missão"</div>
-<div class="option-desc">Você não só se salva, como se torna uma referência. Um farol para outros que querem se libertar. Quem marca essa geralmente tem o perfil de liderança que as frequências buscam.</div>
+<div class="interstitial">
+<img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=600&h=400&fit=crop" alt="Mistério" style="border-radius:14px;filter:brightness(0.8) contrast(1.1)">
+<p>"Essa pessoa provavelmente conhece <strong>frequências</strong> que você não conhece"</p>
+<button class="btn-primary" onclick="goToScreen(9)">Continuar</button>
 </div>
 </div>
 
-<button class="btn btn-gold btn-block" id="btnQ3" disabled onclick="goToScreen(9)">
-Próxima Pergunta
-</button>
-</div>
-</div>
-
-<!-- ============ TELA 9 (Pergunta 4) ============ -->
+<!-- ===== ETAPA 9: CRENÇAS LIMITANTES ===== -->
 <div class="screen" id="screen9">
-<div class="container">
-<div class="progress-bar"><div class="progress-fill" style="width:62%"></div></div>
-
-<h1>Pergunta 4 de 5</h1>
-<h2>Por que alguns prosperam enquanto outros apenas sobrevivem?</h2>
-
-<div class="context-box">
-Em 1923, John D. Rockefeller já era o homem mais rico do mundo. Um repórter perguntou: "Quanto mais você precisa?" Ele respondeu: "Só mais um pouquinho." Essa mentalidade não é ganância. É uma frequência específica que os mais prósperos aprendem desde cedo. Você, provavelmente, aprendeu o oposto: a se contentar com pouco.
+<div style="padding-top:60px">
+<p style="font-size:0.9rem;color:var(--text-dim);margin-bottom:6px">Complete a frase:</p>
+<p class="quote">"Quando penso em ter muito dinheiro, eu..."</p>
+<div style="margin-top:20px">
+<div class="option-btn" onclick="selectAndGo(this,'q5','nao_mereco',10)"><span class="emoji">😕</span> Sinto que não mereço ou não sou capaz <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'q5','ansioso',10)"><span class="emoji">😨</span> Fico ansioso(a) com medo de perder <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'q5','culpado',10)"><span class="emoji">😔</span> Me sinto culpado(a) por querer <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'q5','direito',10)"><span class="emoji">😊</span> Sei que é meu por direito <span class="arrow">›</span></div>
 </div>
-
-<p style="font-weight:600;color:var(--gold);text-align:center">
-Qual frase ecoa na sua cabeça quando você pensa em ficar verdadeiramente próspero?
-</p>
-
-<div class="options-group" id="q4Options">
-<div class="option-card" onclick="selectOption('q4Options',this)">
-<div class="option-title">"Isso não é pra mim"</div>
-<div class="option-desc">Programação de casta: você foi ensinado que riqueza é para os outros.</div>
-</div>
-<div class="option-card" onclick="selectOption('q4Options',this)">
-<div class="option-title">"Medo de perder quem amo"</div>
-<div class="option-desc">Programação de tribo: você teme ser abandonado se subir.</div>
-</div>
-<div class="option-card" onclick="selectOption('q4Options',this)">
-<div class="option-title">"O que eu faria com tanto?"</div>
-<div class="option-desc">Bloqueio de identidade: você não se enxerga como alguém próspero.</div>
-</div>
-<div class="option-card" onclick="selectOption('q4Options',this)">
-<div class="option-title">"Já sinto que é meu, só não manifestou ainda"</div>
-<div class="option-desc">Raro. Se marcou essa, você já vibra na frequência certa — só falta o código de ativação.</div>
 </div>
 </div>
 
-<button class="btn btn-gold btn-block" id="btnQ4" disabled onclick="goToScreen(10)">
-Próxima Pergunta
-</button>
-</div>
-</div>
-
-<!-- ============ TELA 10 (Pergunta 5) ============ -->
+<!-- ===== ETAPA 10: INTERSTITIAL - DIAGNÓSTICO ===== -->
 <div class="screen" id="screen10">
-<div class="container">
-<div class="progress-bar"><div class="progress-fill" style="width:70%"></div></div>
-
-<h1>Pergunta 5 de 5</h1>
-<h2>Seus antepassados te amaram, mas te passaram um legado pesado...</h2>
-
-<div class="context-box">
-O padrão da escassez é transmitido por gerações. Não está no seu DNA, mas no seu inconsciente familiar. Seu bisavô que passou fome na guerra, seu avô que trabalhou 50 anos na mesma fábrica, seus pais que te ensinaram a "guardar dinheiro na poupança"... todos eles, sem querer, te programaram para repetir o ciclo.
+<div class="interstitial">
+<div style="margin-bottom:16px">
+<span class="badge badge-red">⚠️ Sua resposta mostra seu bloqueio principal!</span>
 </div>
-
-<p style="font-weight:600;color:var(--gold);text-align:center">
-Qual frase você ouvia em casa quando era criança?
-</p>
-
-<div class="options-group" id="q5Options">
-<div class="option-card" onclick="selectOption('q5Options',this)">
-<div class="option-title">"Dinheiro não dá em árvore"</div>
-<div class="option-desc">Escassez como regra universal</div>
-</div>
-<div class="option-card" onclick="selectOption('q5Options',this)">
-<div class="option-title">"Rico é tudo desonesto"</div>
-<div class="option-desc">Riqueza associada à culpa e desonestidade</div>
-</div>
-<div class="option-card" onclick="selectOption('q5Options',this)">
-<div class="option-title">"Guarda pro futuro"</div>
-<div class="option-desc">Mentalidade de sobrevivência, não de prosperidade</div>
-</div>
-<div class="option-card" onclick="selectOption('q5Options',this)">
-<div class="option-title">"Estude pra ser funcionário"</div>
-<div class="option-desc">Programação de servo, não de líder</div>
+<img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&h=400&fit=crop" alt="Bloqueio" style="filter:brightness(0.6) contrast(1.2);border-radius:14px">
+<button class="btn-primary" style="margin-top:24px" onclick="goToScreen(11)">Continuar</button>
 </div>
 </div>
 
-<button class="btn btn-gold btn-block" id="btnQ5" disabled onclick="goToScreen(11)">
-Concluir Perguntas
-</button>
-</div>
-</div>
-
-<!-- ============ TELA 11 (Revelação) ============ -->
+<!-- ===== ETAPA 11: PROVA SOCIAL HISTÓRICA ===== -->
 <div class="screen" id="screen11">
-<div class="container">
-<div class="progress-bar"><div class="progress-fill" style="width:78%"></div></div>
-
-<h1>Agora você merece saber a história completa...</h1>
-
-<div class="story">
-<p>Em 1952, um jardineiro analfabeto chamado <strong style="color:var(--gold)">José dos Santos</strong> trabalhava nos fundos de um casarão no bairro do Pacaembu, em São Paulo. O casarão era alugado por "engenheiros americanos" — na verdade, agentes que fugiram para o Brasil após a Segunda Guerra.</p>
-
-<p>José não sabia, mas eles guardavam no porão manuscritos originais roubados de uma biblioteca secreta na Áustria: o <strong style="color:var(--gold)">Códice da Abundância</strong>, um livro de 1420 que pertencera à família Médici, os banqueiros mais poderosos da Renascença.</p>
-
-<p>Um dia, ao esvaziar uma lixeira, José encontrou páginas parcialmente queimadas do códice. Os agentes tentaram destruí-lo, mas não conseguiram. José juntou os pedaços, escondeu num tambor de óleo e levou pra casa.</p>
-
-<p>Nos <strong style="color:var(--gold-light)">40 dias seguintes</strong>, sem entender latim, mas sentindo a energia dos símbolos, ele ativou as frequências. Em 3 meses, comprou o primeiro terreno. Em 1 ano, era dono de 3 armazéns. Em 1953, os "engenheiros" descobriram. José foi visto pela última vez entrando num <strong style="color:var(--gold)">carro preto misterioso</strong>.</p>
-
-<p>Mas os manuscritos... esses sobreviveram. Escondidos num sítio no interior de Minas, foram decodificados em 1995 por um professor da USP que <strong style="color:var(--gold)">desapareceu em circunstâncias misteriosas em 1997</strong>.</p>
-
-<p style="color:var(--blue-soft);font-weight:600;text-align:center;font-size:1.05rem">
-Agora, pela primeira vez em 600 anos, as 12 Frequências estão disponíveis em português, adaptadas para o nosso tempo.
-</p>
+<div style="padding-top:60px">
+<h2>Você sabia que <span class="gold">8 das 10 famílias mais ricas</span> da história são judaicas?</h2>
+<div style="margin-top:24px">
+<div class="option-btn" onclick="selectAndGo(this,'q6','nao_percebi',12)"><span class="emoji">📘</span> Não tinha percebido isso <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'q6','padrao',12)"><span class="emoji">🕯️</span> Já notei esse padrão <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'q6','porque',12)"><span class="emoji">🙏</span> Sempre me perguntei o porquê <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'q6','coincidencia2',12)"><span class="emoji">🙌</span> Isso é coincidência <span class="arrow">›</span></div>
 </div>
-
-<div class="separator"></div>
-
-<p style="font-weight:600;color:var(--gold);text-align:center;font-size:1.05rem">
-Você sente no seu corpo que essa história é real? Que algo dentro de você reconhece essas informações?
-</p>
-
-<div class="options-group" id="q6Options">
-<div class="option-card" onclick="selectOption('q6Options',this);document.getElementById('btnQ6').disabled=false" data-value="sim">
-<div class="option-title">"Sim. Meu corpo arrepiou. Isso é meu por direito."</div>
-<div class="option-desc">Acesso liberado</div>
-</div>
-<div class="option-card" onclick="selectOption('q6Options',this);document.getElementById('btnQ6').disabled=false" data-value="duvida">
-<div class="option-title">"Ainda duvido. Preciso de mais provas."</div>
-<div class="option-desc">Ver mais informações</div>
 </div>
 </div>
 
-<button class="btn btn-blue btn-block" id="btnQ6" disabled onclick="handleScreen11()">
-Prosseguir
-</button>
-</div>
-</div>
-
-<!-- ============ TELA 12 (Benefícios) ============ -->
+<!-- ===== ETAPA 12: INTERSTITIAL - NOMES DE ELITE ===== -->
 <div class="screen" id="screen12">
-<div class="container">
-<div class="progress-bar"><div class="progress-fill" style="width:85%"></div></div>
-
-<h1>O que está escondido por trás deste selo?</h1>
-
-<p style="text-align:center;color:var(--text-secondary)">
-Você está prestes a receber um sistema que:
-</p>
-
-<div class="benefit-list">
-<div class="benefit-item">
-<div class="benefit-icon">🕎</div>
-<div class="benefit-title">Reconfigura o seu "Rádio Interno"</div>
-<div class="benefit-desc">Assim como um rádio precisa da frequência certa para captar uma estação, essas ativações sintonizam seu espírito para enxergar oportunidades que sempre estiveram na sua frente, mas que o sistema te programou para ignorar.</div>
-</div>
-
-<div class="benefit-item">
-<div class="benefit-icon">🛡️</div>
-<div class="benefit-title">Neutraliza o Ciclo da Escassez</div>
-<div class="benefit-desc">Lembra do diagnóstico? Essas frequências agem como um antídoto espiritual, quebrando a programação mental que te obriga a repetir o ciclo de pobreza dos seus pais e avós.</div>
-</div>
-
-<div class="benefit-item">
-<div class="benefit-icon">✡️</div>
-<div class="benefit-title">Cria uma Proteção Espiritual</div>
-<div class="benefit-desc">Não é misticismo superficial. É sabedoria ancestral aplicada. Quando você não opera mais pelo medo, você para de atrair situações de crise. Você se liberta.</div>
-</div>
-
-<div class="benefit-item">
-<div class="benefit-icon">👑</div>
-<div class="benefit-title">Te Conecta à Sabedoria dos Antigos</div>
-<div class="benefit-desc">As mesmas famílias usam esses códigos há séculos. A diferença é que eles usam para controlar. Você vai usar para se libertar. E, uma vez livre, você joga o jogo pelas suas próprias regras.</div>
+<div class="interstitial">
+<img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=400&fit=crop" alt="Elite histórica" style="filter:sepia(0.8) brightness(0.85);border-radius:14px">
+<p style="font-style:italic;font-size:1rem">"Rothschild, Warburg, Goldman, Lehman, Sachs, Oppenheimer, Schiff, Rockefeller..."</p>
+<button class="btn-primary" onclick="goToScreen(13)">Continuar</button>
 </div>
 </div>
 
-<div class="info-box" style="text-align:center;position:relative">
-<p style="margin:0;font-size:0.98rem;line-height:1.9">
-Tudo isso está codificado em <strong style="color:var(--gold)">12 ativações de áudio e vídeo</strong>, com exatamente <strong style="color:var(--gold)">3 minutos cada</strong>, para serem feitas durante <strong style="color:var(--gold)">40 dias</strong>.<br><br>
-O segredo de 600 anos, resumido em menos de uma hora de conteúdo sagrado.
-</p>
-</div>
-
-<button class="btn btn-gold btn-block" onclick="goToScreen(13)">
-Entendi. Qual o próximo passo?
-</button>
-</div>
-</div>
-
-<!-- ============ TELA 13 (Resultado) ============ -->
+<!-- ===== ETAPA 13: INTENÇÃO / INTERESSE ===== -->
 <div class="screen" id="screen13">
-<div class="container">
-<div class="progress-bar"><div class="progress-fill" style="width:92%"></div></div>
-
-<div class="loading-container" id="loading13">
-<div class="loading-spinner"></div>
-<div class="loading-text">Processando resultado final...</div>
-</div>
-
-<div id="content13" style="display:none">
-<div class="result-banner">
-<div class="result-badge">✦ Acesso Liberado ✦</div>
-<div class="result-title">Você passou no Teste de Acesso</div>
-
-<div class="analysis-grid">
-<div class="analysis-item">✦ Consciência: Desperta</div>
-<div class="analysis-item">✦ Discernimento: Elevado</div>
-<div class="analysis-item">✦ Potencial: Confirmado</div>
-</div>
-
-<p style="color:var(--gold);font-size:1.1rem;font-weight:600;margin:16px 0 0;font-family:'Cormorant Garamond',serif">
-Você faz parte dos poucos com o perfil espiritual necessário.
-</p>
-</div>
-
-<div class="alert-box" style="margin-top:24px">
-<p style="margin:0;text-align:center;color:var(--text-dim);font-style:italic">
-"Muitos são chamados, mas poucos são escolhidos."
-</p>
-</div>
-
-<button class="btn btn-gold btn-block" onclick="goToScreen(14)">
-Receber as Frequências Sagradas
-</button>
+<div style="padding-top:60px">
+<h2>E se eu te dissesse que uma <span class="gold">oração de 12 palavras</span> em hebraico pode mudar sua realidade financeira em 40 dias, você:</h2>
+<div style="margin-top:24px">
+<div class="option-btn" onclick="selectAndGo(this,'q7','imediatamente',14)"><span class="emoji">😄</span> Tentaria imediatamente <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'q7','curioso',14)"><span class="emoji">🤩</span> Ficaria muito curioso(a) para saber mais <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'q7','entender',14)"><span class="emoji">✨</span> Precisaria entender como funciona primeiro <span class="arrow">›</span></div>
 </div>
 </div>
 </div>
 
-<!-- ============ TELA 14 (Última Barreira) ============ -->
+<!-- ===== ETAPA 14: DESEJO ESPECÍFICO ===== -->
 <div class="screen" id="screen14">
-<div class="container">
-<div class="progress-bar"><div class="progress-fill" style="width:96%"></div></div>
-
-<h1>Antes de entregarmos as Frequências...</h1>
-<h2>Um último passo sagrado.</h2>
-
-<div class="price-compare">
-<div class="price-item">
-<span class="price-label">Livro esotérico (200 páginas)</span>
-<span class="price-value">R$ 80,00</span>
+<div style="padding-top:60px">
+<h2>Qual o seu maior desejo neste momento?</h2>
+<div style="margin-top:24px">
+<div class="option-btn" onclick="selectAndGo(this,'q8','dividas',15)">Quitar todas as dívidas <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'q8','reserva',15)">Ter uma reserva de emergência <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'q8','liberdade',15)">Conquistar liberdade financeira <span class="arrow">›</span></div>
+<div class="option-btn" onclick="selectAndGo(this,'q8','familia',15)">Ajudar minha família <span class="arrow">›</span></div>
 </div>
-<div class="price-item">
-<span class="price-label">Mentoria espiritual (mensal)</span>
-<span class="price-value">R$ 2.500,00</span>
-</div>
-<div class="price-item highlight">
-<span class="price-label">12 Frequências Sagradas</span>
-<span class="price-value">Revelado no vídeo</span>
 </div>
 </div>
 
-<p style="text-align:center;color:var(--text-secondary);font-size:0.92rem;margin:16px 0">
-600 anos de sabedoria antiga condensados e prontos para transformar sua vida. O valor será revelado apenas para os escolhidos.
-</p>
-
-<div class="separator"></div>
-
-<p style="text-align:center;color:var(--text-secondary)">
-Mas, como este é um <strong style="color:var(--gold)">protocolo sagrado</strong>, o acesso requer um <strong style="color:var(--blue-soft)">juramento</strong>.
-</p>
-
-<div class="oath-box">
-<p style="margin-bottom:16px;color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:0.85rem;letter-spacing:3px;text-transform:uppercase">Juramento de Libertação</p>
-<p class="oath-text">
-"Você se compromete a usar esse conhecimento apenas para <strong style="color:var(--gold)">libertação</strong> — nunca para controle ou dominação sobre outros?"
-</p>
-</div>
-
-<div class="options-group" id="oathOptions">
-<div class="option-card" onclick="selectOption('oathOptions',this)" data-value="sim">
-<div class="option-title">Sim, eu juro.</div>
-<div class="option-desc">Aceito o compromisso sagrado da liberdade.</div>
-</div>
-<div class="option-card" onclick="selectOption('oathOptions',this)" data-value="nao">
-<div class="option-title">Não posso garantir isso</div>
-<div class="option-desc">Entendo que o acesso será encerrado.</div>
-</div>
-</div>
-
-<button class="btn btn-gold btn-block" id="btnOath" disabled onclick="handleOath()">
-Confirmar Juramento
-</button>
-</div>
-</div>
-
-<!-- ============ TELA 15 (Acesso Final) ============ -->
+<!-- ===== ETAPA 15: INTERSTITIAL - PERSONALIZAÇÃO ===== -->
 <div class="screen" id="screen15">
-<div class="container">
-<div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
-
-<div class="ornament">✦ ✡ ✦</div>
-<h1>Protocolo de Desbloqueio Ativado</h1>
-<h2>As 12 Frequências estão sendo transmitidas...</h2>
-
-<script type="text/javascript"> var s=document.createElement("script"); s.src="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/sdk.js", s.async=!0,document.head.appendChild(s); </script>
-<div id="ifr_69a22c83ede7290ae6404323_wrapper" style="margin: 0 auto; width: 100%; max-width: 400px;">
-<div style="position: relative; padding: 178.21782178217822% 0 0 0;" id="ifr_69a22c83ede7290ae6404323_aspect">
-<iframe frameborder="0" allowfullscreen src="about:blank" id="ifr_69a22c83ede7290ae6404323" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" referrerpolicy="origin" onload="this.onload=null, this.src='https://scripts.converteai.net/7e7885b3-1332-4708-8ca6-18e811f0b379/players/69a22c83ede7290ae6404323/v4/embed.html'+(location.search||'?')+'&vl='+encodeURIComponent(location.href)"></iframe>
+<div class="interstitial">
+<img src="https://images.unsplash.com/photo-1507692049790-de58290a4334?w=600&h=400&fit=crop" alt="Oração no templo" style="filter:brightness(0.75) saturate(1.3);border-radius:14px">
+<p>"As <strong>palavras</strong> se ajustam ao seu desejo específico..."</p>
+<button class="btn-primary" onclick="goToScreen(16)">Continuar</button>
 </div>
 </div>
 
-<div class="screen-footer">
-<span class="live-dot"></span> Transmissão Ativa ✦ Canal Sagrado ✦ Acesso Protegido
+<!-- ===== ETAPA 16: MÚLTIPLA ESCOLHA / CHECKLIST ===== -->
+<div class="screen" id="screen16">
+<div style="padding-top:60px">
+<h2>Marque o que você mais deseja manifestar nos próximos 30 dias:</h2>
+<p class="subtitle">(Múltipla escolha)</p>
+<div class="checkbox-grid" id="checkGrid">
+<div class="check-item" onclick="toggleCheck(this)"><span class="box"></span> Abundância Financeira</div>
+<div class="check-item" onclick="toggleCheck(this)"><span class="box"></span> Paz Interior</div>
+<div class="check-item" onclick="toggleCheck(this)"><span class="box"></span> Alegria</div>
+<div class="check-item" onclick="toggleCheck(this)"><span class="box"></span> Motivação</div>
+<div class="check-item" onclick="toggleCheck(this)"><span class="box"></span> Confiança</div>
+<div class="check-item" onclick="toggleCheck(this)"><span class="box"></span> Relac. Saudáveis</div>
+<div class="check-item" onclick="toggleCheck(this)"><span class="box"></span> Propósito</div>
+<div class="check-item" onclick="toggleCheck(this)"><span class="box"></span> Gratidão</div>
+<div class="check-item" onclick="toggleCheck(this)"><span class="box"></span> Clareza Mental</div>
+<div class="check-item" onclick="toggleCheck(this)"><span class="box"></span> Pens. Positivos</div>
+<div class="check-item" onclick="toggleCheck(this)"><span class="box"></span> Saúde Física</div>
+<div class="check-item" onclick="toggleCheck(this)"><span class="box"></span> Foco</div>
+<div class="check-item" onclick="toggleCheck(this)"><span class="box"></span> Evolução Pessoal</div>
+<div class="check-item" onclick="toggleCheck(this)"><span class="box"></span> Produtividade</div>
+<div class="check-item" onclick="toggleCheck(this)"><span class="box"></span> Manifestar Desejos</div>
+<div class="check-item" onclick="toggleCheck(this)"><span class="box"></span> Paciência</div>
 </div>
+<button class="btn-primary" onclick="goToScreen(17)">Continuar</button>
+</div>
+</div>
+
+<!-- ===== ETAPA 17: COMPROMISSO / FILTRO FINAL ===== -->
+<div class="screen" id="screen17">
+<div style="padding-top:50px;text-align:center">
+<span class="badge badge-yellow">⚠️ Aviso:</span>
+<p style="font-size:1.05rem;line-height:1.5;margin:16px 0 20px;padding:0 10px">"As palavras têm consciência própria, elas <strong>se voltam contra</strong> quem as usa com má intenção"</p>
+<img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=600&h=400&fit=crop" alt="Pergaminho sagrado" class="oath-img" style="filter:brightness(0.8) sepia(0.3)">
+<p style="font-size:1.05rem;font-weight:600;margin:20px 0 16px">Você se compromete a usar esse poder apenas para propósitos nobres?</p>
+<div class="option-btn" onclick="handleOath('sim')" style="justify-content:center"><span class="emoji">🙏</span> Sim, me comprometo completamente</div>
+<div class="option-btn" onclick="handleOath('nao')" style="justify-content:center"><span class="emoji">🤲</span> Não posso garantir isso</div>
+</div>
+</div>
+
+<!-- ===== ETAPA FINAL: VSL + OFERTA ===== -->
+<div class="screen" id="screenFinal">
+
+<div class="final-banner">
+ASSISTA O VÍDEO ABAIXO PARA RECEBER AS <span class="gold">12 PALAVRAS SAGRADAS</span> DA PROSPERIDADE JUDAICA...
+</div>
+
+<p class="urgency-text">⚠️ Aviso: Se você sair desta página, perde o acesso para sempre.</p>
+
+<div class="video-container" id="videoContainer">
+<div class="video-thumb" id="videoThumb" onclick="playVideo()">
+<div class="play-btn">▶</div>
+<p class="play-text">APERTE AQUI PARA VER O VÍDEO</p>
+<p class="play-sub">Suas respostas mostraram algo importante...<br>Você passou pelo teste de qualificação.<br><strong>Aprovada para conhecer a oração.</strong></p>
+</div>
+</div>
+
+<div class="offer-section">
+<h2>ACHO QUE VOCÊ NÃO ENTENDEU...</h2>
+<p class="offer-sub">Veja o valor real de tudo que você recebe:</p>
+
+<div class="stack-item">
+<span class="name">Oração Judaica da Prosperidade</span>
+<span class="price">R$ 597</span>
+</div>
+<div class="stack-item">
+<div>
+<span class="gift">🎁 BÔNUS</span> <span class="name">As 3 Palavras de Abertura</span>
+<div class="bonus-desc">Podem ser usadas HOJE</div>
+</div>
+<span class="price">R$ 197</span>
+</div>
+<div class="stack-item">
+<div>
+<span class="gift">🎁 BÔNUS</span> <span class="name">O Mapa dos 40 Dias</span>
+</div>
+<span class="price">R$ 297</span>
+</div>
+<div class="stack-item">
+<div>
+<span class="gift">🎁 BÔNUS</span> <span class="name">Proteção Energética Judaica</span>
+</div>
+<span class="price">R$ 497</span>
+</div>
+
+<div class="total-line">
+<span>Total:</span>
+<span class="price">R$ 1.588</span>
+</div>
+
+<div class="final-price">
+Somente hoje, tudo isso por apenas:
+<span class="amount">R$ 67,00</span>
+</div>
+</div>
+
+<a href="#" class="btn-cta" id="ctaLink1">🔓 Quero as 12 Palavras + Bônus!</a>
+<a href="#" class="btn-cta" id="ctaLink2" style="background:var(--green);color:#fff">✨ Quero Desbloquear a Abundância</a>
+
+<div class="scarcity-section">
+<p class="vagas">🔴 Restam apenas <span id="vagasCount">3</span> vagas</p>
+<div class="countdown" id="countdown">
+<span class="unit" id="cdMin">14</span>
+<span class="sep">:</span>
+<span class="unit" id="cdSec">59</span>
+</div>
+</div>
+
+<div class="guarantee">
+<div class="shield">🛡️</div>
+<h3>60 Dias de Garantia Incondicional</h3>
+<p>Basta enviar um WhatsApp dizendo "Quero meu dinheiro de volta" e devolvemos 100% do seu investimento. Sem perguntas.</p>
+</div>
+
+<a href="#" class="btn-cta" id="ctaLink3">🔓 Quero as 12 Palavras + Bônus!</a>
+
+</div>
+
+<!-- ===== TELA DE BLOQUEIO ===== -->
+<div class="screen" id="screenBlocked">
+<div style="text-align:center;padding-top:100px">
+<p style="font-size:3rem;margin-bottom:20px">🚫</p>
+<h2 style="color:var(--red)">Acesso Negado</h2>
+<p class="subtitle" style="margin-top:12px">Infelizmente, as palavras sagradas não podem ser reveladas a quem não se compromete com propósitos nobres.</p>
 </div>
 </div>
 
 <script>
-// Golden particles effect
-const canvas = document.getElementById('particles-canvas');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+// ===== STATE =====
+let currentScreen = 1;
+const totalSteps = 17;
+const answers = {};
 
-const particles = [];
-const particleCount = 40;
-
-class Particle {
-  constructor() {
-    this.reset();
-  }
-  reset() {
-    this.x = Math.random() * canvas.width;
-    this.y = canvas.height + 10;
-    this.size = Math.random() * 2.5 + 0.5;
-    this.speedY = -(Math.random() * 0.5 + 0.15);
-    this.speedX = (Math.random() - 0.5) * 0.3;
-    this.opacity = Math.random() * 0.4 + 0.1;
-    this.fadeSpeed = Math.random() * 0.002 + 0.001;
-    this.life = 0;
-    this.maxLife = Math.random() * 600 + 400;
-    // Gold tones
-    const tones = [
-      [154, 123, 45],
-      [180, 148, 50],
-      [120, 100, 40],
-      [74, 98, 179],
-      [100, 80, 35]
-    ];
-    const tone = tones[Math.floor(Math.random() * tones.length)];
-    this.r = tone[0];
-    this.g = tone[1];
-    this.b = tone[2];
-  }
-  update() {
-    this.x += this.speedX;
-    this.y += this.speedY;
-    this.life++;
-    if (this.life > this.maxLife * 0.7) {
-      this.opacity -= this.fadeSpeed * 2;
-    }
-    if (this.opacity <= 0 || this.y < -10) {
-      this.reset();
-    }
-  }
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(${this.r},${this.g},${this.b},${this.opacity})`;
-    ctx.fill();
-  }
-}
-
-for (let i = 0; i < particleCount; i++) {
-  const p = new Particle();
-  p.y = Math.random() * canvas.height;
-  p.life = Math.random() * p.maxLife;
-  particles.push(p);
-}
-
-function animateParticles() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach(p => {
-    p.update();
-    p.draw();
-  });
-  requestAnimationFrame(animateParticles);
-}
-
-animateParticles();
-
-window.addEventListener('resize', () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-});
-
-// Navigation
+// ===== NAVIGATION =====
 function goToScreen(num) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  const target = document.getElementById('screen' + num);
-  target.classList.add('active');
-  window.scrollTo(0, 0);
 
-  // Handle loading screens
-  if (num === 3) {
-    document.getElementById('loading3').style.display = 'flex';
-    document.getElementById('content3').style.display = 'none';
-    setTimeout(() => {
-      document.getElementById('loading3').style.display = 'none';
-      document.getElementById('content3').style.display = 'block';
-      const lines = document.querySelectorAll('#content3 .scroll-text .line');
-      lines.forEach((line, i) => {
-        line.style.animationDelay = (i * 0.6) + 's';
-        line.style.animation = 'revealLine 0.6s ' + (i * 0.6) + 's forwards';
-      });
-    }, 3000);
+  let targetId;
+  if (num === 'final') targetId = 'screenFinal';
+  else if (num === 'blocked') targetId = 'screenBlocked';
+  else targetId = 'screen' + num;
+
+  const target = document.getElementById(targetId);
+  if (target) {
+    target.classList.add('active');
+    window.scrollTo({top: 0, behavior: 'smooth'});
   }
 
-  if (num === 13) {
-    document.getElementById('loading13').style.display = 'flex';
-    document.getElementById('content13').style.display = 'none';
-    setTimeout(() => {
-      document.getElementById('loading13').style.display = 'none';
-      document.getElementById('content13').style.display = 'block';
-    }, 4000);
+  // Update progress
+  if (typeof num === 'number' && num > 1) {
+    document.getElementById('progressWrap').style.display = 'block';
+    const pct = Math.min(((num - 1) / totalSteps) * 100, 100);
+    document.getElementById('progressBar').style.width = pct + '%';
   }
+
+  if (num === 'final') {
+    document.getElementById('progressWrap').style.display = 'none';
+    startCountdown();
+  }
+  if (num === 'blocked') {
+    document.getElementById('progressWrap').style.display = 'none';
+  }
+
+  currentScreen = num;
 }
 
-// Option selection (radio style)
-function selectOption(groupId, el) {
-  const group = document.getElementById(groupId);
-  group.querySelectorAll('.option-card').forEach(c => c.classList.remove('selected'));
+// ===== GENDER SELECTION =====
+function selectGender(el, gender) {
+  document.querySelectorAll('.gender-card').forEach(c => c.classList.remove('selected'));
   el.classList.add('selected');
-
-  const btnMap = {
-    'identityOptions': 'btn1',
-    'q1Options': 'btnQ1',
-    'q2Options': 'btnQ2',
-    'q3Options': 'btnQ3',
-    'q4Options': 'btnQ4',
-    'q5Options': 'btnQ5',
-    'q6Options': 'btnQ6',
-    'oathOptions': 'btnOath'
-  };
-
-  const btnId = btnMap[groupId];
-  if (btnId) {
-    document.getElementById(btnId).disabled = false;
-  }
+  answers.gender = gender;
+  setTimeout(() => goToScreen(2), 400);
 }
 
-// Checkbox toggle
+// ===== SELECT OPTION AND GO =====
+function selectAndGo(el, key, value, nextScreen) {
+  // Visual feedback
+  el.parentElement.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  answers[key] = value;
+  setTimeout(() => goToScreen(nextScreen), 350);
+}
+
+// ===== CHECKBOX TOGGLE =====
 function toggleCheck(el) {
   el.classList.toggle('checked');
-  const box = el.querySelector('.check-box');
-  if (el.classList.contains('checked')) {
-    box.textContent = '✓';
-  } else {
-    box.textContent = '';
-  }
-
-  const checked = document.querySelectorAll('#checkboxGroup .checkbox-item.checked').length;
-  document.getElementById('btn2').disabled = checked < 3;
+  const box = el.querySelector('.box');
+  box.textContent = el.classList.contains('checked') ? '✓' : '';
 }
 
-// Screen 11 handler
-function handleScreen11() {
-  const selected = document.querySelector('#q6Options .option-card.selected');
-  if (!selected) return;
-  if (selected.dataset.value === 'duvida') {
-    goToScreen(5);
+// ===== OATH HANDLER =====
+function handleOath(choice) {
+  if (choice === 'sim') {
+    goToScreen('final');
   } else {
-    goToScreen(12);
+    goToScreen('blocked');
   }
 }
 
-// Oath handler
-function handleOath() {
-  const selected = document.querySelector('#oathOptions .option-card.selected');
-  if (!selected) return;
-  if (selected.dataset.value === 'nao') {
-    document.getElementById('blockedOverlay').classList.add('active');
-  } else {
-    goToScreen(15);
-  }
+// ===== VIDEO PLAYER =====
+function playVideo() {
+  const container = document.getElementById('videoContainer');
+  const thumb = document.getElementById('videoThumb');
+  thumb.style.display = 'none';
+  // Replace with actual video embed - using placeholder
+  const iframe = document.createElement('iframe');
+  iframe.src = 'about:blank'; // Replace with actual VSL URL
+  iframe.allow = 'autoplay; encrypted-media';
+  iframe.allowFullscreen = true;
+  container.appendChild(iframe);
 }
 
-// Reveal line animation keyframes
-const style = document.createElement('style');
-style.textContent = `@keyframes revealLine{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}`;
-document.head.appendChild(style);
+// ===== COUNTDOWN TIMER =====
+function startCountdown() {
+  let totalSec = 14 * 60 + 59;
+  const minEl = document.getElementById('cdMin');
+  const secEl = document.getElementById('cdSec');
+
+  const tick = setInterval(() => {
+    totalSec--;
+    if (totalSec <= 0) {
+      clearInterval(tick);
+      totalSec = 0;
+    }
+    const m = Math.floor(totalSec / 60);
+    const s = totalSec % 60;
+    minEl.textContent = String(m).padStart(2, '0');
+    secEl.textContent = String(s).padStart(2, '0');
+  }, 1000);
+}
 </script>
 
 </body>
