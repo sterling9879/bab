@@ -803,13 +803,12 @@ ASSISTA O VÍDEO ABAIXO PARA RECEBER AS <span class="gold">12 PALAVRAS SAGRADAS<
 
 <p class="urgency-text">⚠️ Aviso: Se você sair desta página, perde o acesso para sempre.</p>
 
-<div class="video-container" id="videoContainer">
-<div class="video-thumb" id="videoThumb" onclick="playVideo()">
-<div class="play-btn">▶</div>
-<p class="play-text">APERTE AQUI PARA VER O VÍDEO</p>
-<p class="play-sub">Suas respostas mostraram algo importante...<br>Você passou pelo teste de qualificação.<br><strong>Aprovada para conhecer a oração.</strong></p>
+<div style="width:100%;max-width:400px;margin:0 auto 24px;">
+<vturb-smartplayer id="vid-69ab65d4a584f1a405fad426" style="display:block;margin:0 auto;width:100%;max-width:400px;"></vturb-smartplayer>
+<script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/7e7885b3-1332-4708-8ca6-18e811f0b379/players/69ab65d4a584f1a405fad426/v4/player.js",s.async=!0,document.head.appendChild(s);</script>
 </div>
-</div>
+
+<div id="delayedContent" style="display:none">
 
 <div class="offer-section">
 <h2>ACHO QUE VOCÊ NÃO ENTENDEU...</h2>
@@ -850,15 +849,15 @@ Somente hoje, tudo isso por apenas:
 </div>
 </div>
 
-<a href="#" class="btn-cta" id="ctaLink1">🔓 Quero as 12 Palavras + Bônus!</a>
-<a href="#" class="btn-cta" id="ctaLink2" style="background:var(--green);color:#fff">✨ Quero Desbloquear a Abundância</a>
+<a href="https://payt.site/MaCOr5d" class="btn-cta" id="ctaLink1">🔓 Quero as 12 Palavras + Bônus!</a>
+<a href="https://payt.site/MaCOr5d" class="btn-cta" id="ctaLink2" style="background:var(--green);color:#fff">✨ Quero Desbloquear a Abundância</a>
 
 <div class="scarcity-section">
 <p class="vagas">🔴 Restam apenas <span id="vagasCount">3</span> vagas</p>
 <div class="countdown" id="countdown">
-<span class="unit" id="cdMin">14</span>
+<span class="unit" id="cdMin">12</span>
 <span class="sep">:</span>
-<span class="unit" id="cdSec">59</span>
+<span class="unit" id="cdSec">08</span>
 </div>
 </div>
 
@@ -868,7 +867,9 @@ Somente hoje, tudo isso por apenas:
 <p>Basta enviar um WhatsApp dizendo "Quero meu dinheiro de volta" e devolvemos 100% do seu investimento. Sem perguntas.</p>
 </div>
 
-<a href="#" class="btn-cta" id="ctaLink3">🔓 Quero as 12 Palavras + Bônus!</a>
+<a href="https://payt.site/MaCOr5d" class="btn-cta" id="ctaLink3">🔓 Quero as 12 Palavras + Bônus!</a>
+
+</div><!-- /delayedContent -->
 
 </div>
 
@@ -912,6 +913,14 @@ function goToScreen(num) {
   if (num === 'final') {
     document.getElementById('progressWrap').style.display = 'none';
     startCountdown();
+    // Show delayed content after 13:45 (825 seconds)
+    setTimeout(function() {
+      var dc = document.getElementById('delayedContent');
+      if (dc) {
+        dc.style.display = 'block';
+        dc.style.animation = 'fadeIn 0.6s ease';
+      }
+    }, 825000);
   }
   if (num === 'blocked') {
     document.getElementById('progressWrap').style.display = 'none';
@@ -953,22 +962,9 @@ function handleOath(choice) {
   }
 }
 
-// ===== VIDEO PLAYER =====
-function playVideo() {
-  const container = document.getElementById('videoContainer');
-  const thumb = document.getElementById('videoThumb');
-  thumb.style.display = 'none';
-  // Replace with actual video embed - using placeholder
-  const iframe = document.createElement('iframe');
-  iframe.src = 'about:blank'; // Replace with actual VSL URL
-  iframe.allow = 'autoplay; encrypted-media';
-  iframe.allowFullscreen = true;
-  container.appendChild(iframe);
-}
-
 // ===== COUNTDOWN TIMER =====
 function startCountdown() {
-  let totalSec = 14 * 60 + 59;
+  let totalSec = 12 * 60 + 8;
   const minEl = document.getElementById('cdMin');
   const secEl = document.getElementById('cdSec');
 
